@@ -12,13 +12,13 @@ Class Home extends CI_Controller{
         
         parent::__construct();
         
-        $this->load->library("head_files");
-        $this->load->library("curl");
+        $this->load->library("Head_files");
+        $this->load->library("Curl");
         
         $this->key_wuorks = "WBqyGRGuRHHTEIZwTuJfFvPgyhCHZ67GCmtlAxdT";
         $this->api_url    = $this->config->item("api_wuorks");
         
-        error_reporting(0);
+        //error_reporting(0);
         
     }
     

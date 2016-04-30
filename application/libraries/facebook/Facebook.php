@@ -23,6 +23,7 @@ require_once "base_facebook.php";
  */
 class Facebook extends BaseFacebook
 {
+     
   /**
    * Cookie prefix
    */
@@ -55,6 +56,7 @@ class Facebook extends BaseFacebook
    * @see BaseFacebook::__construct
    */
   public function __construct($config) {
+       
     if ((function_exists('session_status') 
       && session_status() !== PHP_SESSION_ACTIVE) || !session_id()) {
       session_start();
@@ -87,6 +89,7 @@ class Facebook extends BaseFacebook
    * Initiates Shared Session
    */
   protected function initSharedSession() {
+     
     $cookie_name = $this->getSharedSessionCookieName();
     if (isset($_COOKIE[$cookie_name])) {
       $data = $this->parseSignedRequest($_COOKIE[$cookie_name]);
@@ -182,7 +185,7 @@ class Facebook extends BaseFacebook
    *
    * @see BaseFacebook::clearAllPersistentData()
    */
-  protected function clearAllPersistentData() {
+  protected function clearAllPersistentData() {   
     foreach (self::$kSupportedKeys as $key) {
       $this->clearPersistentData($key);
     }

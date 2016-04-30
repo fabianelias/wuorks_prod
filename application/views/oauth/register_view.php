@@ -59,17 +59,17 @@
                     <input type="submit" name="register" id="register" class="btn btn-primary btn-block " style=""value="Registrarme">
                </div>
             </form> 
-            <!--
+            
             <form action="<?php echo base_url(); ?>oauth/facebook" method="post" accept-charset="UTF-8" role="form">
                 <div class="form-group">
                     <button class="btn buttons-row btn-oauth btn-block" type="submit">
                         <i class="fa fa-facebook "></i>
                         &nbsp;
-                        Ingresa con Facebook
+                        Ingresa con Facebook <small>(Solo profesionales)</small>
                     </button>                            
                 </div>
             </form>
-            -->
+            
         </div>
         <div class="col-lg-1">
             &nbsp;
