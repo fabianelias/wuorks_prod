@@ -313,47 +313,85 @@ Class Oauth extends CI_Controller{
     public function facebook(){
         /*
         $this->load->library('fbconnect');
-        $data = array('redirect_uri' => 'http://wuorks.com/oauth/handle_facebook_login/',//site_url("/oauth/handle_facebook_login/"),
+        $data = array('redirect_uri' => 'http://www.wuorks.cl/oauth/handle_facebook_login/',//site_url("/oauth/handle_facebook_login/"),
                       'scope' => 'email,public_profile' );
         $permissions = ['email', 'user_likes']; // optional
         
         //redirect($this->fbconnect->getLoginUrl('http://wuorks.com/oauth/facebook_login/', $permissions));
-        redirect($this->fbconnect->getLoginUrl($data));//data original
+        redirect($this->fbconnect->getLoginUrl($data),'refresh');//data original
        */
         
-       require './vendor/src/facebook-sdk-v5/autoload.php';
-       $fb = new Facebook\Facebook([
-            'app_id' => '266809433657812',
-            'app_secret' => 'bc616c376f3f5d28cb4e63e1bac3254c',
-            'default_graph_version' => 'v2.6',
-          ]);
+       require './vendor/fb/src/Facebook/autoload.php';
+       
+        $fb = new Facebook\Facebook([
+             'app_id' => '266809433657812',
+             'app_secret' => 'bc616c376f3f5d28cb4e63e1bac3254c',
+             'default_graph_version' => 'v2.5',
+             ]);
         
       
         
         $helper = $fb->getRedirectLoginHelper();
-        $permissions = ['email']; // optional
-        $loginUrl = $helper->getLoginUrl('http://wuorks.com/oauth/handle_facebook_login/', $permissions);
-
-       // echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
-       redirect($loginUrl,'refresh');
         
-         
+        $permissions = ['email']; // optional
+        
+        $loginUrl = $helper->getLoginUrl('http://www.wuorks.cl/oauth/handle_facebook_login/', $permissions);
+       
+        redirect($loginUrl);
+        
+        
     } 
-    
     public function handle_facebook_login(){
         
-         $datados = array(
-                'name'        => $this->fbconnect->user['name'],
-                'id_facebook' => $this->fbconnect->user['id'],
-                'email'       => $this->fbconnect->user['email']
+        require './vendor/fb/src/Facebook/autoload.php';
+       
+        $fb = new Facebook\Facebook([
+             'app_id' => '266809433657812',
+             'app_secret' => 'bc616c376f3f5d28cb4e63e1bac3254c',
+             'default_graph_version' => 'v2.5',
+             ]);
+        $helper = $fb->getRedirectLoginHelper();
+        $fb->setDefaultAccessToken('{access-token}');
+
+
+          try {
+            $accessToken = $helper->getAccessToken();
+          } catch(Facebook\Exceptions\FacebookResponseException $e) {
+            // When Graph returns an error
+            //echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
+          } catch(Facebook\Exceptions\FacebookSDKException $e) {
+            // When validation fails or other local issues
+            //echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit;
+          }
+
+          if (isset($accessToken)) {
+            // Logged in!
+            $_SESSION['facebook_access_token'] = (string) $accessToken;
+            
+            $response = $fb->get('/me?fields=id,name,email,picture,first_name,last_name,gender', $accessToken );
+            $userNode = $response->getGraphUser();
+            
+            $plainOldArray = $response->getDecodedBody();
+            $this->facebook_final($plainOldArray);
+              
+          }
+          
+          
+        
+    }
+    public function facebook_final($dataFacebook){
+            
+           $datados = array(
+                'name'        => $dataFacebook['name'],
+                'id_facebook' => $dataFacebook['id'],
+                'email'       => $dataFacebook['email']
             );
-            //print_r($datados);  
-         
-        if($this->fbconnect->user){
+        
+        if(!empty($dataFacebook)){   
             
             //Paso 1: verifico si el email de facebook existe;
-           
-            
             //verificar email
             $this->curl->create($this->api_url."register/verify_email/email/".$datados["email"]."/key/".$this->key_wuorks);
             $verify = $this->curl->execute();
@@ -361,43 +399,68 @@ Class Oauth extends CI_Controller{
             if($verify == FALSE){
                 
                 //Se crea registro de usuario nuevo
+                switch ($dataFacebook['gender']){
+                    case "male"  : $gender = 1; break;
+                    case "famale": $gender = 2; break;
+                }
+                
                 $newUser = array(
-                    "name"        => $this->fbconnect->user['name'],
-                    "last_name_p" => "",
+                    "name"        => $dataFacebook['first_name'],
+                    "last_name_p" => $dataFacebook['last_name'],
                     "last_name_m" => "",
-                    "email"       => $this->fbconnect->user['email'],
-                    "id_social"   => $this->fbconnect->user['id'],
+                    "email"       => $dataFacebook['email'],
+                    "id_social"   => $dataFacebook['id'],
                     "user_type"   => 1,
                     "password"    => md5("social"),
                     "newletter"   => 1,
                     "state"       => 1,
-                    "gender"      => 0
+                    "gender"      => (int)$gender
                 );
-                $field_string = http_build_query($newUser);
-                $ch = curl_init();
-                curl_setopt($ch,CURLOPT_URL, $this->api_url."register/registerUser/key/".$this->key_wuorks);
-                curl_setopt($ch,CURLOPT_POST, 1);
-                curl_setopt($ch,CURLOPT_POSTFIELDS, $field_string);
+                
+                $ch = curl_init($this->api_url."register/registerUser/key/".$this->key_wuorks);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($newUser));
                 $result = curl_exec($ch);
                 curl_close($ch);
                 
+                //Guardamos su imagen de facebook.
+                $img = file_get_contents('https://graph.facebook.com/'.$dataFacebook['id'].'/picture?width=550&height=550');
+                $file =  './asset/img/user_avatar/'.$dataFacebook['id'].'.jpg';
+                file_put_contents($file, $img);
+                
                 if($result){
                     
-                    $this->session->set_userdata("user",$newUser);
+                    $email    = $dataFacebook['email'];
+                    $password = md5('social');
+
+                    $dataAcceso = array(
+                        'email'    => $email,
+                        'password' => $password
+                    );
+                
+                    $ch = curl_init($this->api_url."login/login/key/".$this->key_wuorks);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                    curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($dataAcceso));
+                    $result = curl_exec($ch);
+                    curl_close($ch);
+                    $info = json_decode($result,true);
+                    //crear array para variables de session
                     
-                    redirect(base_url()."profile/step_1?q=completa_tus_datos","refresh");
+                    $this->session->set_userdata($info['data'][0]);
+                    redirect(base_url()."profile/?uri=facebook","refresh");
                     
                 }else{
-                    echo "Error, intentelo más tarde";
+                    $this->session->set_flashdata("error_2", "Error de facebook");
+                    redirect(base_url()."oauth/in");
                 }
                 
                 
             }else{
                
-                $email    = $datados["email"];
+                $email    = $dataFacebook['email'];
                 $password = md5('social');
-
-
 
                 $dataAcceso = array(
                     'email'    => $email,
@@ -406,14 +469,14 @@ Class Oauth extends CI_Controller{
 
                 //validar si el usuario esta dado de alta
 
-                 $ch = curl_init($this->api_url."login/login/key/".$this->key_wuorks);
+                $ch = curl_init($this->api_url."login/login/key/".$this->key_wuorks);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
                 curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($dataAcceso));
                 $result = curl_exec($ch);
                 curl_close($ch);
                 $info = json_decode($result,true);
-                //crear array para variables de session
+                
                 $this->session->set_userdata($info['data'][0]);
                 redirect(base_url(), 'refresh');
                     
@@ -421,7 +484,6 @@ Class Oauth extends CI_Controller{
                 
                 
         }else{
-            
             $this->session->set_flashdata("error_2", "Error de facebook");
             redirect(base_url()."oauth/in");
         }

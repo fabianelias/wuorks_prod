@@ -50,13 +50,11 @@
             <?php
             }
             ?>
-            <!--
             <form action="<?php echo base_url(); ?>oauth/facebook" method="post" accept-charset="UTF-8" role="form">
                 <div class="form-group">
                     <button class="btn buttons-row btn-oauth btn-block" type="submit"><i class="fa fa-facebook"></i> Ingresar con Facebook</button>                            
                 </div>
             </form>
-            -->
         </div>
     </div>
     <br/>

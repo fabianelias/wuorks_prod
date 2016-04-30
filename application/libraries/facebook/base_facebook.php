@@ -16,9 +16,11 @@
  */
 
 if (!function_exists('curl_init')) {
+    
   throw new Exception('Facebook needs the CURL PHP extension.');
 }
 if (!function_exists('json_decode')) {
+    
   throw new Exception('Facebook needs the JSON PHP extension.');
 }
 
@@ -29,6 +31,7 @@ if (!function_exists('json_decode')) {
  */
 class FacebookApiException extends Exception
 {
+    
   /**
    * The result from the API server that represents the exception information.
    *
@@ -42,6 +45,7 @@ class FacebookApiException extends Exception
    * @param array $result The result from the API server
    */
   public function __construct($result) {
+    
     $this->result = $result;
 
     $code = 0;
@@ -138,7 +142,7 @@ abstract class BaseFacebook
    * @var array
    */
   public static $CURL_OPTS = array(
-    CURLOPT_CONNECTTIMEOUT => 10,
+    CURLOPT_CONNECTTIMEOUT => 30,
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_TIMEOUT        => 60,
     CURLOPT_USERAGENT      => 'facebook-php-3.2',
@@ -248,8 +252,10 @@ abstract class BaseFacebook
    * @param array $config The application configuration
    */
   public function __construct($config) {
+     
     $this->setAppId($config['appId']);
     $this->setAppSecret($config['secret']);
+    
     if (isset($config['fileUpload'])) {
       $this->setFileUploadSupport($config['fileUpload']);
     }
@@ -259,7 +265,9 @@ abstract class BaseFacebook
     if (isset($config['allowSignedRequest'])
         && !$config['allowSignedRequest']) {
         $this->allowSignedRequest = false;
+         
     }
+    
     $state = $this->getPersistentData('state');
     if (!empty($state)) {
       $this->state = $state;
@@ -462,11 +470,15 @@ abstract class BaseFacebook
    *                could not be determined.
    */
   protected function getUserAccessToken() {
+      
+    
     // first, consider a signed request if it's supplied.
     // if there is a signed request, then it alone determines
     // the access token.
     $signed_request = $this->getSignedRequest();
+     
     if ($signed_request) {
+        
       // apps.facebook.com hands the access_token in the signed_request
       if (array_key_exists('oauth_token', $signed_request)) {
         $access_token = $signed_request['oauth_token'];
@@ -987,7 +999,7 @@ abstract class BaseFacebook
 
     curl_setopt_array($ch, $opts);
     $result = curl_exec($ch);
-   
+    print_r($result);exit();
     $errno = curl_errno($ch);
     // CURLE_SSL_CACERT || CURLE_SSL_CACERT_BADFILE
     if ($errno == 60 || $errno == 77) {
