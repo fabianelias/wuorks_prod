@@ -16,15 +16,17 @@
 <?php
     $i = $infoUser["data"][0];
 ?>
-<div class="alert alert-info text-center" role="alert">
-    Hola <?php echo $i['name'];?>, estos son los Wuokers recomendados para ti
+<div class="alert alert-info text-center navbar-fixed-top" style="margin-top:65px;" role="alert">
+    Hola <?php echo ucfirst($i['name']);?>, estos son los Wuokers recomendados para ti
     <i class="fa fa-certificate"></i>
 </div>
 <div class="container" style="margin-top: 20px;">
     
     <div class="row">
         <div class="col-md-12">
-           
+            <br/>
+            
+            <h1></h1>
         </div> 
         <div class="col-md-3">
             <h5 class="title">
@@ -88,14 +90,49 @@
         </div> 
         <div class="col-md-9">
             <h5 class="title">
-                Resultados
+                Resultados <?php echo count($matches['users']);?>
                 <i class="fa fa-certificate"></i>
             </h5>
            <?php
-           if(!empty($matches)){
-               
+           if(!empty($matches['users'])){
+               foreach($matches['users'] as $mat){
+               ?>
+             <div class="col-sm-6 col-md-4" >
+                <div class="thumbnail" style="padding:0px;">
+                    <div class="" style="width:100%; height: 220px;">
+                        <img src="<?php echo base_url()."asset/img/user_avatar/".$mat['avatar'];?>" alt="" style="width:100%;height: 100%;">
+                    </div>  
+                <div class="caption">
+                    <h3 class="title"><?php echo $mat['username'];?></h3>
+                  <p><?php echo $mat['name_prof'];?></p>
+                  <p class="title">
+                      Valoraciones: 
+                  <?php
+                    for ($v = 1; $v < 6; $v++) {
+                        if ($v <= $mat['rating']) {
+                            echo '<i class="fa fa-star" style="color:#5f93e7;"></i>';
+                        } else {
+                            echo '<i class="fa fa-star-o" style="color:#5f93e7;"></i>';
+                        }
+                    }
+                  ?> 
+                  </p>
+                  <p>
+                      <a href="#" class="btn btn-primary hidden" role="button">Contratar</a> 
+                      <a href="<?php echo base_url()."wuokers/u/".$mat['username']."/".$mat['name_prof']."/".$mat['key_prof']."?wk=".$mat['wuorks_key'];?>" 
+                         class="btn btn-default btn-block btn-sm" role="button" target="_blank">
+                          Ver su perfil
+                      </a>
+                  </p>
+                </div>
+                </div>
+              </div>
+               <?php
+               }
            }else{
-              echo  "No se encontraron wuokers que calzen con el puestos";
+              echo  "<center><h3 class='title'>No se encontraron wuokers que calzen con el puesto"
+                    ."<hr/><small>No te preocupes igualmente llegaran Wuokers a tu aviso.</small></h3>"
+                    . "</center>";
            }
            ?>
         </div> 
@@ -106,7 +143,7 @@
 <style type="text/css">
 
     .title{
-        font-weight: 300;
+        font-weight: 200;
         color: #47525d;
     }
     

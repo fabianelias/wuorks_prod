@@ -22,7 +22,10 @@
             </div>
             <div class="form-group col-lg-2">
                 <input type="submit" name="btn-search" id="btn-search" class="btn btn-primary" value="Buscar"
-                style="border-radius:0px; border:none; height:50px; width:100%; background:#3AA3E3; color:#fff;"       
+                style="border-radius:0px; border:none; height:50px; width:100%; background-color: #4a90e2;
+                border-color: #4a90e2;
+                letter-spacing: 2px;
+                line-height: 17px; color:#fff;"       
                 >
             </div>
             <div class="form-group col-lg-1">&nbsp;</div>
