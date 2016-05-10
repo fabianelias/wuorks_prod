@@ -46,7 +46,8 @@
                               <div class="panel panel-default">
                                     <div class="panel-heading">Empresa: <?php echo strtoupper($row["company_name"]); ?>
                                         <a href="<?php echo base_url();?>profile/editCompany" class="btn btn-sm btn-primary" style="margin-left:35px;">
-                                            Editar perfil
+                                            <i class="fa fa-lg  fa-edit"></i>&nbsp;
+                                             Editar
                                         </a>
                                     </div>
                                     <div class="panel-body">
@@ -92,7 +93,7 @@
                                 }else{
                                 ?>
                                   <a href="<?php echo base_url(); ?>profile/createCompany" class="btn btn-sm btn-primary text-center">
-                                      Crear perfil profesional <i class="fa fa-plus"></i>
+                                      Crear perfil Empresa <i class="fa fa-plus"></i>
                                   </a>
                                 <?php
                                 }

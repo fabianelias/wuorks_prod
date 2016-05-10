@@ -30,23 +30,10 @@ if($this->session->flashdata('mensajes')){
                               <h4 class="title"><?php echo $i['username']; ?></h4>
                           </div>
                           <div class="col-md-9">
-                              <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" ><a href="<?php echo base_url(); ?>profile/">Tu perfil</a></li>
-                                    <?php 
-                                    if($i["user_type"] == 1){
-                                        //profesional
-                                    ?>
-                                    <li role="presentation" class="active"><a href="<?php echo base_url(); ?>profile/profession" aria-controls="profession" role="tab">Tus profesiones</a></li>
-                                    <?php
-                                    }else{
-                                        //empresa
-                                    ?>
-                                    <li role="presentation" class="active"><a href="<?php echo base_url(); ?>profile/company" aria-controls="company" role="tab">Tu empresa</a></li>
-                                    <?php
-                                    }
-                                    ?>
-                                    <li role="presentation"><a href="<?php echo base_url(); ?>profile/contract/" aria-controls="settings">Tus contratos</a></li>
-                                </ul>
+                              <!-- Sub menu -->
+                              <?php 
+                              $this->load->view('inc/inc_sub_menu_view');
+                              ?>
                               <br/>
                               <br/>
                               <?php

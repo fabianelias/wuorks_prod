@@ -1,3 +1,8 @@
+<script type="text/javascript">
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+})
+</script>
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="<?php if($tab == "perfil"){echo "active";}?>">
         <a href="<?php echo base_url(); ?>profile">Tu perfil</a>
@@ -9,9 +14,6 @@
     <li role="presentation" class="<?php if($tab == "profession"){echo "active";}?>">
         <a href="<?php echo base_url(); ?>profile/profession">Tus profesiones</a>
     </li>
-    <li role="presentation" class="<?php if($tab == "contract"){echo "active";}?>">
-        <a href="<?php echo base_url(); ?>profile/jobs">Mini Jobs</a>
-    </li>
     <?php
     }else{
         //empresa
@@ -20,7 +22,13 @@
         <a href="<?php echo base_url(); ?>profile/company" aria-controls="company" role="tab">Tu empresa</a>
     </li>
     <li role="presentation" class="<?php if($tab == "avisos"){echo "active";}?>">
-        <a href="<?php echo base_url(); ?>profile/jobs" aria-controls="company" role="tab">Publicar aviso</a>
+        <a href="<?php echo base_url(); ?>profile/jobs" aria-controls="company" role="tab">
+            Mini Jobs
+            <i class="fa fa-certificate"
+               data-toggle="tooltip" data-placement="top" 
+               title="Trabajos de corta duración"
+            ></i>
+        </a>
     </li>
     <?php
     }

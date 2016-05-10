@@ -47,7 +47,7 @@ Class Profile extends CI_Controller{
         
         $data["files"]  = $this->head_files->register();
         $data["titulo"] = "Wuorks el profesional que necesitas";
-
+        $data["tab"]    = "perfil";
         //Obtengo la info del usuario
         $this->curl->create($this->api_url."user/infoUser/id_user/".$this->id_user."/key/".$this->key_wuorks);
         $data["infoUser"] = json_decode($this->curl->execute(),TRUE);
@@ -66,7 +66,7 @@ Class Profile extends CI_Controller{
         
         $data["files"]  = $this->head_files->register();
         $data["titulo"] = "Wuorks el profesional que necesitas";
-        
+        $data["tab"]    = "profession";
         
         
         //Obtengo la info del usuario
@@ -116,8 +116,8 @@ Class Profile extends CI_Controller{
         
         $data["files"]  = $this->head_files->register();
         $data["titulo"] = "Wuorks el profesional que necesitas";
-        
-        //Obtengo la info del usuario
+        $data["tab"]    = "contract";
+         //Obtengo la info del usuario
         $this->curl->create($this->api_url."user/infoUser/id_user/".$this->id_user."/key/".$this->key_wuorks);
         $data["infoUser"] = json_decode($this->curl->execute(),TRUE);
         
@@ -152,7 +152,7 @@ Class Profile extends CI_Controller{
         //Obtengo los miniJobs creados por el usuario
         $this->curl->create($this->api_url."job/getMyJobs/id_user/".$this->id_user."/key/".$this->key_wuorks);
         $data["jobs"]  = json_decode($this->curl->execute(), true);
-        
+       
         
         $this->load->view("includes/head",$data);
         $this->load->view("includes/nav_view");
@@ -179,6 +179,41 @@ Class Profile extends CI_Controller{
         $this->load->view("includes/head",$data);
         $this->load->view("includes/nav_view");
         $this->load->view("mini_jobs/new_job_view",$data);
+        $this->load->view("includes/footer");
+        
+    }
+    /***************************************************************************
+     * @applicants(); función para vista de usuarios que han postulado a un
+     * miniJobs
+     **************************************************************************/
+    public function applicants($key_aviso){
+        
+        $data["files"]  = $this->head_files->register();
+        $data["titulo"] = "Wuorks el profesional que necesitas";
+        $data["tab"]    = "avisos";
+        
+        //Obtengo la info del usuario
+        $this->curl->create($this->api_url."user/infoUser/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["infoUser"] = json_decode($this->curl->execute(),TRUE);
+        
+        //Obtenfo la info de su empresa
+        $this->curl->create($this->api_url."company/company/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["company"] = json_decode($this->curl->execute(), true);
+        
+        //Obtengo los miniJobs creados por el usuario
+        $this->curl->create($this->api_url."job/getMyJobs/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["jobs"]  = json_decode($this->curl->execute(), true);
+        
+        foreach ($data["jobs"] as $job){
+            if($job['key_aviso'] == $key_aviso){
+                $data['job'][0] = $job;
+                break;
+            }
+        }
+        
+        $this->load->view("includes/head",$data);
+        $this->load->view("includes/nav_view");
+        $this->load->view("mini_jobs/postulantes_view",$data);
         $this->load->view("includes/footer");
         
     }

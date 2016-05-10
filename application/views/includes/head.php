@@ -8,6 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Empleos, profesionales, trabajos, servicios, freelancer">
     <meta name="author" content="">
+    
+    <meta property="og:title" content="Wuorks | El profesional que necesitas" />
+    <meta property="og:description" content="Servicios, profesionales, empresas, trabajos y más..." />
+    <meta property="og:image" content="<?php echo base_url();?>asset/img/logo-cl.png" />
 
     <title> <?php echo $titulo; ?> </title>
 

@@ -22,11 +22,11 @@
         <i class="fa fa-arrow-left"></i> volver
         </a>
         <p class="hidden-md hidden-lg">
-            Wuokers recomendados
+            Wuokers interesados
             <i class="fa fa-certificate"></i>
         </p>
         <p class="hidden-sm hidden-xs">
-        Hola <?php echo ucfirst($i['name']);?>, estos son los Wuokers recomendados para ti
+        Hola <?php echo ucfirst($i['name']);?>, estos son los Wuokers que han aplicado a tu aviso
         <i class="fa fa-certificate"></i>
         </p>
     </div>
@@ -53,60 +53,16 @@
                     <small>Descripción: <br/></small>
                     <?php echo ucfirst($job[0]['description']);?>
                 </li>
-                <li class="list-group-item">
-                    <small>Tipo aviso: <br/></small>
-                    <?php
-                    switch ($job[0]['tipo_aviso']){
-                        case 1: $tipo_aviso = "HORAS"; break;
-                        case 2: $tipo_aviso = "DÍAS"; break;
-                        case 3: $tipo_aviso = "SEMANA"; break;
-                    }
-                    echo '"'.$tipo_aviso.'"'; 
-                    ?>
-                </li>
-                <li class="list-group-item">
-                    <small>Genero: <br/></small>
-                    <?php
-                    switch ($job[0]['genero']){
-                        case 1: $genero = "HOMBRES"; break;
-                        case 2: $genero = "MUJERES"; break;
-                        case 3: $genero = "AMBOS"; break;
-                    }
-                    echo '"'.$genero.'"'; 
-                    ?>
-                </li>
-                <li class="list-group-item">
-                    <small>Horario: <br/></small>
-                    <?php
-                    switch ($job[0]['horario']){
-                        case 1: $horario = "MAÑANA"; break;
-                        case 2: $horario = "TARDE"; break;
-                        case 3: $horario = "NOCHE"; break;
-                    }
-                    echo '"'.$horario.'"'; 
-                    ?>
-                </li>
-                <li class="list-group-item">
-                    <small>Zona: <br/></small>
-                    <?php
-                    switch ($job[0]['zona']){
-                        case 1: $zona = "COMUNA"; break;
-                        case 2: $zona = "REGIÓN"; break;
-                        case 3: $zona = "CHILE"; break;
-                    }
-                    echo '"'.$zona.'"'; 
-                    ?>
-                </li>
           </ul>
         </div> 
         <div class="col-md-9">
             <h5 class="title">
-                Resultados <?php echo count($matches['users']);?>
+                Resultados <?php echo count($job[0]['postulantes']);?>
                 <i class="fa fa-certificate"></i>
             </h5>
            <?php
-           if(!empty($matches['users'])){
-               foreach($matches['users'] as $mat){
+           if(!empty($job[0]['postulantes'])){
+               foreach($job[0]['postulantes'] as $mat){
                ?>
              <div class="col-sm-6 col-md-4" >
                 <div class="thumbnail" style="padding:0px;">
@@ -115,25 +71,46 @@
                     </div>  
                 <div class="caption">
                     <h3 class="title"><?php echo $mat['username'];?></h3>
-                  <p><?php echo $mat['name_prof'];?></p>
-                  <p class="title">
+                  <ul class="list-group">
+                    <li class="title list-group-item">
+                        <i class="fa fa-user"></i>&nbsp;
+                        <?php echo strtoupper($mat['name'])." ".strtoupper($mat['last_name_p']);?>
+                    </li>
+                    <li class="title list-group-item">
+                        <i class="fa fa-envelope-o"></i>&nbsp;
+                        <?php echo $mat['email']; ?>
+                    </li>
+                    <li class="title list-group-item">
+                        <i class="fa fa-phone"></i>&nbsp;
+                        <?php echo $mat['cell_phone_number']; ?>
+                    </li>
+                    <li class="title list-group-item">
+                        <i class="fa fa-phone"></i>&nbsp;(opc)
+                        <?php echo $mat['telephone_number']; ?>
+                    </li>
+                    <li class="title list-group-item">
+                        <i class="fa fa-genderless"></i>&nbsp;
+                        <?php 
+                        switch ($mat['gender']){
+                            case 1: $gender = "Hombre";break;
+                            case 2: $gender = "Mujer";break;
+                        }
+                        echo $gender; ?>
+                    </li>
+                  </ul>
+                  <p class="title hidden">
                       Valoraciones: 
                   <?php
-                    for ($v = 1; $v < 6; $v++) {
+                    /*for ($v = 1; $v < 6; $v++) {
                         if ($v <= $mat['rating']) {
                             echo '<i class="fa fa-star" style="color:#5f93e7;"></i>';
                         } else {
                             echo '<i class="fa fa-star-o" style="color:#5f93e7;"></i>';
                         }
-                    }
+                    }*/
                   ?> 
                   </p>
                   <p>
-                      <a href="#" class="btn btn-primary hidden" role="button">Contratar</a> 
-                      <a href="<?php echo base_url()."wuokers/u/".$mat['username']."/".$mat['name_prof']."/".$mat['key_prof']."?wk=".$mat['wuorks_key'];?>" 
-                         class="btn btn-default btn-block btn-sm" role="button" target="_blank">
-                          Ver su perfil
-                      </a>
                   </p>
                 </div>
                 </div>
@@ -141,8 +118,8 @@
                <?php
                }
            }else{
-              echo  "<center><h3 class='title'>No se encontraron wuokers que calzen con el puesto"
-                    ."<hr/><small>No te preocupes igualmente llegaran Wuokers a tu aviso.</small></h3>"
+              echo  "<center><h3 class='title'>Nadie ha postulado a tu aviso todavía."
+                    ."<hr/><small></small></h3>"
                     . "</center>";
            }
            ?>

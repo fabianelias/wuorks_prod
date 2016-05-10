@@ -36,7 +36,6 @@
                               <?php 
                               $this->load->view('inc/inc_sub_menu_view');
                               ?>
-                              
                               <?php
                               if(!empty($jobs)){
                                   ?>
@@ -50,21 +49,34 @@
                                     <hr/>
                                   <?php
                                   foreach ($jobs as $job){
+                                      
+                                      if($job['state'] == 0){
+                                          $style = "panel-info";
+                                      }else{
+                                          $style = "panel-default";
+                                      }
+                                      
                                   ?>
-                                  <div class="panel panel-default">
+                                  <div class="panel <?php echo $style;?>">
                                       <div class="panel-heading">
                                           <?php 
                                           echo ucfirst(substr($job['title'], 0,30));
+                                          ?>
+                                          <?php 
+                                          if($job['state'] == 3){
                                           ?>
                                           <a href="<?php echo base_url();?>profile/matchs/<?php echo $job['key_aviso']."?Jobs=".  md5($job['key_aviso'])?>" class="btn btn-sm btn-info" style="margin-left:35px;">
                                             Wuokers Recomendados
                                             <i class="fa fa-certificate"></i>
                                           </a>
                                           <a href="<?php echo base_url();?>profile/adminJob/<?php echo $job['key_aviso']."?Jobs=".  md5($job['key_aviso'])?>"
-                                            class="pull-right" style="">
+                                            class="pull-right hidden" style="">
                                             Administrar Job
                                             <i class="fa fa-cog"></i>
                                           </a>
+                                          <?php
+                                          }
+                                          ?>
                                       </div>
                                     <div class="panel-body">
                                       <?php
@@ -76,9 +88,17 @@
                                               <tr>
                                                   <td>
                                                       <small>
-                                                      Postulantes : 
+                                                      Postulantes : (
                                                       <?php 
-                                                      echo '(5)';
+                                                      echo count($job['postulantes']);
+                                                      ?>
+                                                      )
+                                                      <?php
+                                                       if($job['state'] == 0){
+                                                      ?>
+                                                      <a href="<?php echo base_url();?>profile/applicants/<?php echo $job['key_aviso'];?>">ver todos</a>
+                                                      <?php
+                                                       }
                                                       ?>
                                                       </small>
                                                   </td>
@@ -106,7 +126,7 @@
                                                       <?php 
                                                       switch ($job['state']){
                                                           case 0: $state = "Activo";   break;
-                                                          case 2; $state = "Inactivo"; break;
+                                                          case 1; $state = "Terminado"; break;
                                                       }
                                                       echo $state;
                                                       ?>
@@ -140,7 +160,7 @@
                                 <?php
                                 }else{
                                 ?>
-                                <a href="<?php echo base_url(); ?>profile/createCompany" class="btn btn-sm btn-primary text-center">
+                                <a href="<?php echo base_url(); ?>profile/job" class="btn btn-sm btn-primary text-center">
                                     Crear miniJobs <i class="fa fa-plus"></i>
                                 </a> 
                                 <?php

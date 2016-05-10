@@ -30,30 +30,18 @@
                               <h4 class="title"><?php echo $this->session->userdata('username'); ?></h4>
                           </div>
                           <div class="col-md-9">
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#profile"   data-toggle="tab">Tu perfil</a></li>
-                                    <?php 
-                                    if($i["user_type"] == 1){
-                                        //profesional
-                                    ?>
-                                    <li role="presentation" ><a href="<?php echo base_url(); ?>profile/profession" aria-controls="profession" role="tab">Tus profesiones</a></li>
-                                    <?php
-                                    }else{
-                                        //empresa
-                                    ?>
-                                    <li role="presentation" ><a href="<?php echo base_url(); ?>profile/company" aria-controls="company" role="tab">Tu empresa</a></li>
-                                    <?php
-                                    }
-                                    ?>
-                                    <li role="presentation"><a href="<?php echo base_url(); ?>profile/contract/" aria-controls="settings">Tus contratos</a></li>
-                                </ul>
+                              <!-- Sub menu -->
+                              <?php 
+                              $this->load->view('inc/inc_sub_menu_view');
+                              ?>
                               <br/>
                               <br/>
                               <div class="panel panel-default">
                                 <div class="panel-heading">
                                     Información basica
                                     <a href="<?php echo base_url(); ?>profile/editProfile" class="btn btn-sm btn-primary" style="margin-left:25px;">
-                                        Editar info <i class="fa fa-edit"></i>
+                                        <i class="fa fa-edit fa-lg"></i>&nbsp;
+                                        Editar información
                                     </a>
                                 </div>
                                 <div class="panel-body">
@@ -63,7 +51,7 @@
                                                 <?php 
                                                 if($i['address'] == "" || $i["commune"] == "" || $i["region"] == "" || $i["cell_phone_number"] == 0 || $i["rut"] == ""){
                                                     echo "<tr>";
-                                                    echo "<td><p class='btn btn-sm btn-warning'><i class='fa fa-warning'></i> Es importante que completes tu datos</p></td>";
+                                                    echo "<td><p class='btn btn-sm btn-warning'><i class='fa fa-warning'></i> Es importante que completes todos tus datos</p></td>";
                                                     echo "</tr>";
                                                 }else{
                                                    echo "<tr>";
