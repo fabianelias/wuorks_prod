@@ -31,27 +31,10 @@
                               <h4 class="title"><?php echo $this->session->userdata('username'); ?></h4>
                           </div>
                           <div class="col-md-9">
-                              <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" ><a href="<?php echo base_url(); ?>profile">Tu perfil</a></li>
-                                <?php 
-                                if($i["user_type"] == 1){
-                                    //profesional
-                                ?>
-                                <li role="presentation" class="active"><a href="<?php echo base_url(); ?>profile/profession" aria-controls="profession" role="tab">Tus profesiones</a></li>
-                                <?php
-                                }else{
-                                    //empresa
-                                ?>
-                                <li role="presentation" class="active"><a href="<?php echo base_url(); ?>profile/company" aria-controls="company" role="tab">Tu empresa</a></li>
-                                <?php
-                                }
-                                ?>
-                                <li role="presentation"><a href="<?php echo base_url(); ?>profile/contract">Tus contratos</a></li>
-                                <!--
-                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Tus Mensajes</a></li>
-                                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Notificaciones</a></li>
-                                -->
-                              </ul>
+                              <!-- Sub menu -->
+                              <?php 
+                               $this->load->view('inc/inc_sub_menu_view');
+                              //include_once realpath. '/inc/inc_sub_menu_view.php';?>
                               <br/>
                               <br/>
                               
@@ -63,7 +46,8 @@
                               <div class="panel panel-default">
                                     <div class="panel-heading">Empresa: <?php echo strtoupper($row["company_name"]); ?>
                                         <a href="<?php echo base_url();?>profile/editCompany" class="btn btn-sm btn-primary" style="margin-left:35px;">
-                                            Editar perfil
+                                            <i class="fa fa-lg  fa-edit"></i>&nbsp;
+                                             Editar
                                         </a>
                                     </div>
                                     <div class="panel-body">
@@ -103,12 +87,13 @@
                                   <?php 
                                 if($i['address'] == "" || $i["commune"] == "" || $i["region"] == "" || $i["cell_phone_number"] == 0 || $i["rut"] == ""){
                                     echo "<tr>";
-                                    echo "<td><p class='btn btn-sm btn-warning'><a href='".base_url()."profile/editProfile' style='color:#fff;'><i class='fa fa-warning'></i> Es importante que completes tu datos</a></p></td>";
+                                    echo "<br/>";
+                                    echo "<td><br/><p class='btn btn-sm btn-warning'><a href='".base_url()."profile/editProfile' style='color:#fff;'><i class='fa fa-warning'></i> Es importante que completes tu datos</a></p></td>";
                                     echo "</tr>";
                                 }else{
                                 ?>
                                   <a href="<?php echo base_url(); ?>profile/createCompany" class="btn btn-sm btn-primary text-center">
-                                      Crear perfil profesional <i class="fa fa-plus"></i>
+                                      Crear perfil Empresa <i class="fa fa-plus"></i>
                                   </a>
                                 <?php
                                 }

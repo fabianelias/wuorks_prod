@@ -30,23 +30,10 @@ if($this->session->flashdata('mensajes')){
                               <h4 class="title"><?php echo $i['username']; ?></h4>
                           </div>
                           <div class="col-md-9">
-                              <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation"><a href="<?php echo base_url(); ?>profile/">Tu perfil</a></li>
-                                <?php 
-                                if($i["user_type"] == 1){
-                                    //profesional
-                                ?>
-                                <li role="presentation" ><a href="<?php echo base_url(); ?>profile/profession" aria-controls="profession" role="tab">Tus profesiones</a></li>
-                                <?php
-                                }else{
-                                    //empresa
-                                ?>
-                                <li role="presentation" ><a href="<?php echo base_url(); ?>profile/company" aria-controls="company" role="tab">Tu empresa</a></li>
-                                <?php
-                                }
-                                ?>
-                                <li role="presentation" class="active"><a href="<?php echo base_url(); ?>profile/contract/" aria-controls="settings">Tus contratos</a></li>
-                            </ul>
+                              <!-- Sub menu -->
+                              <?php 
+                              $this->load->view('inc/inc_sub_menu_view');
+                              ?>
                               <br/>
                               <br/>
                               <?php
@@ -143,9 +130,9 @@ if($this->session->flashdata('mensajes')){
                                                         </ul>
                                                         <?php
                                                         if($emp["state"] == 0 ){
-                                                           echo '<p class="btn btn-warning">Todavia no te ha calificado</p>';
+                                                           echo '<p class="btn btn-warning">Todavía no te ha calificado</p>';
                                                         }else{
-                                                            echo '<p class="btn btn-success">Usuario ya te ha calificado</p>';
+                                                            echo '<p class="btn btn-success">'.strtoupper($emp["username"]).' ya te ha calificado</p>';
                                                         }
                                                         ?>
                                                     </div>
@@ -154,86 +141,15 @@ if($this->session->flashdata('mensajes')){
                                           <?php    
                                           }
                                           }else{
-                                              echo "Todavia no te han contratado";
+                                              echo "Todavía no te han contratado";
                                           }
                                           ?>
                                           
                                       </div>
                                   </div>
                               </div>
-                              <?php
-                              if($p == 1){
-                              ?>
-                              <br/>
-                              <hr/>
-                              <h3 class="title text-center">Todavía no creas tu primera profesión , no pierdas el tiempo 
-                                <?php 
-                                if($i['address'] == "" || $i["commune"] == "" || $i["region"] == "" || $i["cell_phone_number"] == 0 || $i["rut"] == ""){
-                                    echo "<tr>";
-                                    echo "<td><p class='btn btn-sm btn-warning'><a href='".base_url()."profile/editProfile' style='color:#fff;'><i class='fa fa-warning'></i> Es importante que completes tu datos</a></p></td>";
-                                    echo "</tr>";
-                                }else{
-                                ?>
-                                  <a href="<?php echo base_url(); ?>profile/createProfession" class="btn btn-sm btn-primary text-center">
-                                      Crear perfil profesional <i class="fa fa-plus"></i>
-                                  </a>
-                                <?php
-                                }
-                                ?>
-                              </h3> 
-                              <?php
-                              }else{
-                                  $i = 0;
-                                  foreach ($p as $row){
-                              ?>
-                                  <div class="panel panel-default">
-                                      <div class="panel-heading">Profesión: <?php echo strtoupper($row["name_profession"]); ?><a href="<?php echo base_url()."profile/editProfession/".$row["key_profession"];?>" class="btn btn-sm btn-primary" style="margin-left:35px;">Editar Profesión</a></div>
-                                    <div class="panel-body">
-                                        <div class="table table-responsive col-md-4">
-                                            <label><?php echo ucfirst($row["job_description"]); ?></label>
-                                            <hr/>
-                                            <?php
-                                            switch ($row["workplace"]){
-                                                case 1: $workplace = "Todo chile"; break;
-                                                case 2: $workplace = "Solo en mi región"; break;
-                                                case 3: $workplace = "Solo en mi comuna"; break;
-                                            }
-                                            ?>
-                                            <p>
-                                                Lugar de trabajo:  <?php echo $workplace; ?> &nbsp; | &nbsp;
-                                                Calificación: 
-                                                <?php 
-                                                if(empty($row["rating"])){
-                                                    echo " Sin calificación.";
-                                                }else{
-                                                    $j    = 0;
-                                                    $nota = 0;
-                                                    foreach ($row["rating"] as $ranting){
-                                                        $nota += $ranting["user_rating"];
-                                                        $j++;
-                                                    }
-                                                    $calificacion = $nota / $j;
-                                                    
-                                                    echo $calificacion." (de ".$j." Calificaciones)";
-                                                }
-                                                ?>
-                                            </p>
-                                        </div>
-                                    </div>
-                                  </div>
-                                  
-                              <?php
-                                    $i++;
-                                  }
-                                  
-                                  if($i <= 1){
-                                  ?>
-                                    <hr/>
-                                      
-                                  <?php
-                                  }
-                              }
-                              ?>
+                                   
+                                 
                               <hr/>
                           </div>
                       </div>

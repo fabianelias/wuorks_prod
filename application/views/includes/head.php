@@ -8,6 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Empleos, profesionales, trabajos, servicios, freelancer">
     <meta name="author" content="">
+    
+    <meta property="og:title" content="Wuorks | El profesional que necesitas" />
+    <meta property="og:description" content="Servicios, profesionales, empresas, trabajos y más..." />
+    <meta property="og:image" content="<?php echo base_url();?>asset/img/logo-cl.png" />
 
     <title> <?php echo $titulo; ?> </title>
 
@@ -17,8 +21,8 @@
     <!-- Custom Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="<?php echo base_url(); ?>asset/font-awesome/css/font-awesome.min.css" type="text/css">
-
+    <!--<link rel="stylesheet" href="<?php echo base_url(); ?>asset/font-awesome/css/font-awesome.min.css" type="text/css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>asset/css/animate.min.css" type="text/css">
     

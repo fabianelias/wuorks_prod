@@ -24,7 +24,7 @@ Class Profile extends CI_Controller{
         $this->api_url    = $this->config->item("api_wuorks");
         $this->id_user    = $this->session->userdata("id_user");
         
-        error_reporting(0);
+        //error_reporting(0);
     }
     
     function very_sesion(){
@@ -47,7 +47,7 @@ Class Profile extends CI_Controller{
         
         $data["files"]  = $this->head_files->register();
         $data["titulo"] = "Wuorks el profesional que necesitas";
-
+        $data["tab"]    = "perfil";
         //Obtengo la info del usuario
         $this->curl->create($this->api_url."user/infoUser/id_user/".$this->id_user."/key/".$this->key_wuorks);
         $data["infoUser"] = json_decode($this->curl->execute(),TRUE);
@@ -66,7 +66,7 @@ Class Profile extends CI_Controller{
         
         $data["files"]  = $this->head_files->register();
         $data["titulo"] = "Wuorks el profesional que necesitas";
-        
+        $data["tab"]    = "profession";
         
         
         //Obtengo la info del usuario
@@ -91,7 +91,7 @@ Class Profile extends CI_Controller{
         
         $data["files"]  = $this->head_files->register();
         $data["titulo"] = "Wuorks el profesional que necesitas";
-        
+        $data["tab"]    = "company"; 
         
         
         //Obtengo la info del usuario
@@ -116,8 +116,8 @@ Class Profile extends CI_Controller{
         
         $data["files"]  = $this->head_files->register();
         $data["titulo"] = "Wuorks el profesional que necesitas";
-        
-        //Obtengo la info del usuario
+        $data["tab"]    = "contract";
+         //Obtengo la info del usuario
         $this->curl->create($this->api_url."user/infoUser/id_user/".$this->id_user."/key/".$this->key_wuorks);
         $data["infoUser"] = json_decode($this->curl->execute(),TRUE);
         
@@ -132,9 +132,123 @@ Class Profile extends CI_Controller{
         $this->load->view("includes/footer");
         
     }
-    
-    
-    
+    /***************************************************************************
+     * @mini_jobs(), función para activar la vista de crear mini Jobs.
+     **************************************************************************/
+    public function jobs(){
+        
+        $data["files"]  = $this->head_files->register();
+        $data["titulo"] = "Wuorks el profesional que necesitas";
+        $data["tab"]    = "avisos";
+        
+        //Obtengo la info del usuario
+        $this->curl->create($this->api_url."user/infoUser/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["infoUser"] = json_decode($this->curl->execute(),TRUE);
+        
+        //Obtenfo la info de su empresa
+        $this->curl->create($this->api_url."company/company/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["company"] = json_decode($this->curl->execute(), true);
+        
+        //Obtengo los miniJobs creados por el usuario
+        $this->curl->create($this->api_url."job/getMyJobs/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["jobs"]  = json_decode($this->curl->execute(), true);
+       
+        
+        $this->load->view("includes/head",$data);
+        $this->load->view("includes/nav_view");
+        $this->load->view("mini_jobs/mini_jobs_view",$data);
+        $this->load->view("includes/footer");
+    }
+    /***************************************************************************
+     * @job(), función para activar vista de nuevo o editar miniJobs.
+     ***************************************************************************/
+    public function job(){
+        
+        $data["files"]  = $this->head_files->register();
+        $data["titulo"] = "Wuorks el profesional que necesitas";
+        $data["tab"]    = "job";
+        
+        //Obtengo la info del usuario
+        $this->curl->create($this->api_url."user/infoUser/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["infoUser"] = json_decode($this->curl->execute(),TRUE);
+        
+        //Obtenfo la info de su empresa
+        $this->curl->create($this->api_url."company/company/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["company"] = json_decode($this->curl->execute(), true);
+        
+        $this->load->view("includes/head",$data);
+        $this->load->view("includes/nav_view");
+        $this->load->view("mini_jobs/new_job_view",$data);
+        $this->load->view("includes/footer");
+        
+    }
+    /***************************************************************************
+     * @applicants(); función para vista de usuarios que han postulado a un
+     * miniJobs
+     **************************************************************************/
+    public function applicants($key_aviso){
+        
+        $data["files"]  = $this->head_files->register();
+        $data["titulo"] = "Wuorks el profesional que necesitas";
+        $data["tab"]    = "avisos";
+        
+        //Obtengo la info del usuario
+        $this->curl->create($this->api_url."user/infoUser/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["infoUser"] = json_decode($this->curl->execute(),TRUE);
+        
+        //Obtenfo la info de su empresa
+        $this->curl->create($this->api_url."company/company/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["company"] = json_decode($this->curl->execute(), true);
+        
+        //Obtengo los miniJobs creados por el usuario
+        $this->curl->create($this->api_url."job/getMyJobs/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["jobs"]  = json_decode($this->curl->execute(), true);
+        
+        foreach ($data["jobs"] as $job){
+            if($job['key_aviso'] == $key_aviso){
+                $data['job'][0] = $job;
+                break;
+            }
+        }
+        
+        $this->load->view("includes/head",$data);
+        $this->load->view("includes/nav_view");
+        $this->load->view("mini_jobs/postulantes_view",$data);
+        $this->load->view("includes/footer");
+        
+    }
+    /***************************************************************************
+     * @matchs(), función para mostrar usuarios que calzen con el mini Job
+     **************************************************************************/
+    public function matchs($key_aviso){
+        
+        $data["files"]  = $this->head_files->register();
+        $data["titulo"] = "Wuorks el profesional que necesitas";
+        $data["tab"]    = "matchs";
+        
+        //Obtengo la info del usuario
+        $this->curl->create($this->api_url."user/infoUser/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["infoUser"] = json_decode($this->curl->execute(),TRUE);
+        
+        //Obtenfo la info de su empresa
+        $this->curl->create($this->api_url."company/company/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["company"]  = json_decode($this->curl->execute(), true);
+        
+        //Obtengo la info de un job en particular
+        $this->curl->create($this->api_url."job/infoJob/key_aviso/".$key_aviso."/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["job"] = json_decode($this->curl->execute(), true);
+        
+        //Obtengo Wuokers 
+        $this->curl->create($this->api_url."job/matchesWuokers/key_aviso/".$key_aviso."/key/".$this->key_wuorks);
+        $data["matches"] = json_decode($this->curl->execute(), true);
+        
+        
+        $this->load->view("includes/head",$data);
+        $this->load->view("includes/nav_view");
+        $this->load->view("mini_jobs/match_wuoker_job_view",$data);
+        $this->load->view("includes/footer");
+        
+    }
     /***************************************************************************
      * @change_pass(), función para visualización de vista cambio de clave
      **************************************************************************/
@@ -637,6 +751,58 @@ Class Profile extends CI_Controller{
         }
     }
     
+    /***************************************************************************
+     * @job1(), función para crear un miniJob.
+     **************************************************************************/
+    public function job1(){
+        
+        //Validación de post
+        $this->form_validation->set_rules('title','Titulo','trim|required');
+        $this->form_validation->set_rules('description','Descripción','trim|required');
+        $this->form_validation->set_rules('salario','Salario','trim|required');
+        $this->form_validation->set_rules('nroAppl','Nro. aplicantes','trim|required');
+        $this->form_validation->set_rules('tipo_aviso','Tipo de aviso','trim|required');
+        $this->form_validation->set_rules('horario','Horario','trim|required');
+        $this->form_validation->set_rules('genero','Genero','trim|required');
+        $this->form_validation->set_rules('zona','Zona','trim|required');
+        
+        $this->form_validation->set_message('required','%s es obligatorio');
+        
+        if($this->form_validation->run() != FALSE){
+            
+            $miniJob = array(
+                "title" => $this->input->post('title'),
+                "description" => $this->input->post('description'),
+                "remuneration" => $this->input->post('salario'),
+                "applicants_amount" => $this->input->post('nroAppl'),
+                "tipo_aviso"        => $this->input->post('tipo_aviso'),
+                "genero"            => $this->input->post('genero'),
+                "horario"           => $this->input->post('horario'),
+                "zona"              => $this->input->post('zona'),
+                "id_user"           => $this->session->userdata('id_user')
+            );
+            
+            //envio por post al API
+            $ch = curl_init($this->api_url."job/create_job/key/".$this->key_wuorks);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+            curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($miniJob));
+            $result = curl_exec($ch);
+            curl_close($ch);
+            
+            if($result){
+                $this->session->set_flashdata("mensajes","MiniJob creado con exito");
+                redirect(base_url()."profile/jobs");
+            }else{
+                //error al crear miniJob
+                $this->session->set_flashdata("mensajes","Error, intentelo más tarde");
+                redirect(base_url()."profile/jobs");
+            }
+            
+        }else{
+            echo validation_errors();
+        }
+    }
     
     /***************************************************************************
      * @change_avatar(), función para cambiar la foto de perfil.
