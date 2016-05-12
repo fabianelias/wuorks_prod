@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Empleos, profesionales, trabajos, servicios, freelancer">
     <meta name="author" content="">
-    
+    <link rel="icon" type="image/png" href="<?php echo base_url();?>asset/img/marker2_1.png">
     <meta property="og:title" content="Wuorks | El profesional que necesitas" />
     <meta property="og:description" content="Servicios, profesionales, empresas, trabajos y más..." />
     <meta property="og:image" content="<?php echo base_url();?>asset/img/logo-cl.png" />
@@ -19,19 +19,19 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>asset/css/bootstrap.min.css" type="text/css">
 
     <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <!--<link rel="stylesheet" href="<?php echo base_url(); ?>asset/font-awesome/css/font-awesome.min.css" type="text/css">-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>asset/font-awesome/css/font-awesome.min.css" type="text/css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">-->
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>asset/css/animate.min.css" type="text/css">
     
     <!--fb-plugin-->
-    <meta property="og:url"           content="http://www.wuorks.com" />
+    <meta property="og:url"           content="https://www.wuorks.cl" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="<?php echo $titulo; ?>" />
     <meta property="og:description"   content="Encontrar a un profesional nunca fue tan fácil" />
-    <meta property="og:image"         content="http://www.wuorks.com/asset/images-wuorks/logo-cl.png" />
+    <meta property="og:image"         content="https://www.wuorks.cl/asset/images-wuorks/logo-cl.png" />
 
     
     
@@ -51,7 +51,7 @@
         ?>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://harvesthq.github.io/chosen/chosen.jquery.js"></script>
+    <script src="https://harvesthq.github.io/chosen/chosen.jquery.js"></script>
     <script>
           $(document).ready(function(){
               //document.getElementById("company_category_chosen").style.width="100";

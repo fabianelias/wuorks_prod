@@ -142,11 +142,24 @@ Class Wuokers extends CI_Controller{
             
             $yo_key = $this->session->userdata("wuorks_key");
             //creamos el contrato
-            $this->curl->create($this->api_url."contracts/create_contract/key_employee/".$pro_wk."/key_employer/".$yo_key."/key_service/".$pro_pk."/nomProf/".$pro_pf."/key/".$this->key_wuorks);
+           // $this->curl->create($this->api_url."contracts/create_contract/key_employee/".$pro_wk."/key_employer/".$yo_key."/key_service/".$pro_pk."/nomProf/".$pro_pf."/key/".$this->key_wuorks);
+            //echo $this->api_url."contracts/create_contract/key_employee/".$pro_wk."/key_employer/".$yo_key."/key_service/".$pro_pk."/nomProf/".$pro_pf."/key/".$this->key_wuorks;
+            //$contract = $this->curl->execute();
+            //print_r($contract);exit();
+            $data = array("key_employee" => $pro_wk,
+                          "key_employer" => $yo_key,
+                          "key_service"  => $pro_pk,
+                          "nomProf"      => $pro_pf);
+            //Todos a post
+            $ch = curl_init($this->api_url."contracts/create_contract/key/".$this->key_wuorks);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+            curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($data));
+            $contract = curl_exec($ch);
+            curl_close($ch);
             
-            $contract = $this->curl->execute();
-            
-            if($contract){
+            $result = json_decode($contract,true);
+            if($result){
                 
                 $this->session->set_flashdata("mensajes","Usuario contratado, se te ha enviado un email.");
                 
