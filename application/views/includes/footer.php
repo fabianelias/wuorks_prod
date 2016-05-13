@@ -26,7 +26,7 @@
              <div class="col-lg-12 text-center">
                  <hr/>
                  <small class="">Copyright © <?php echo date('Y'); ?> wuorks.com Todos los Derechos Reservados</small>
-                 <small class="pull-right">wuorks v1.0</small>
+                 <small class="pull-right">wuorks v1.1</small>
              </div>
          </div>
      </footer>
