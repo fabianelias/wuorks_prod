@@ -1,98 +1,123 @@
-
-<input type="hidden" name="wuorks" id="wuorks" value="<?php echo $wuorks; ?>">
-<input type="hidden" name="region" id="region" value="<?php echo $region; ?>">
-<div class="container-fluid hidden-sm hidden-xs" style="margin-top: 55px;">
-    <div class="row">
-        <div class="col-md-3" style="margin-top: 20px;">
-            <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Ranking 10 WUOKERS  
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu in"  aria-labelledby="dropdownMenu1" style="margin-left:0px;margin-top: 14px; min-width: 300px;overflow: scroll; max-height: 500px;">
-                <center class="" id="loadTops">
-                    <br/>
-                    Cargando...
-                    <br/>
-                    <i class="fa fa-circle-o-notch fa-spin fa-2x" style="color:#3AA3E3;"></i>
-                    <br/>
-                </center>
-                <div id="topWuokerss">
-                    
-                </div>
-                <div class="bg-info text-center" style="width:100%; height: 60px;margin-bottom: -9px;">
-                    <br/>
-                    publicidad
-                </div>
-                <li role="separator" class="divider"></li>
-                <li class="text-center"><a href="#">Ver Todos</a></li>
-            </ul>
-        </div>
-        <div class="col-lg-9">
-            <form name="form-search" id="form-search" action="<?php echo base_url(); ?>search"  method="GET" style="margin-top: 20px;">
-                    
-                    <div class="form-group col-lg-5">
-                         <input type="hidden"  name="utf8" id="utf8" value="✓">
-                         <input name="work_area" id="work_area" class="form-control form-search" value="" placeholder="¿Qué profesional necesitas?">
+<div class="container">
+    <div class="container-map row">
+        <!-- Section results -->
+        <div class="col-md-5 col-sm-12 col-xs-12" id="box-results">
+            <input type="hidden" name="wuorks" id="wuorks" value="<?php echo $wuorks; ?>">
+            <input type="hidden" name="region" id="region" value="<?php echo $region; ?>">
+            <!--Section buscador -->
+            <div class="row">
+            <div class="col-md-12 bg-info" style="margin-bottom:10px;">
+                <form name="form-search" id="form-search"  action="<?php echo base_url(); ?>search"  method="GET">
+                    <div class="form-group col-lg-12">
+                        <input type="hidden"  name="utf8" id="utf8" value="✓">
+                        <input name="work_area" id="work_area" class="form-control form-search" value="" placeholder="¿Qué profesional necesitas?">
                     </div>
-                    <div class="form-group col-lg-3">
+                    <div class="form-group col-lg-12">
                         <select name="work_region" id="work_region" class="form-control form-search">
                             <?php
-
-                            foreach ($regiones as $reg){
-                                echo '<option value="'.$reg["id_region"].'">'.$reg["nombre"].'</option>';
+                            foreach ($regiones as $reg) {
+                                echo '<option value="' . $reg["id_region"] . '">' . $reg["nombre"] . '</option>';
                             }
                             ?>
                         </select>
                     </div>
-                    <div class="form-group col-lg-2">
+                    <div class="form-group col-lg-12">
                         <input type="submit" name="btn-search" id="btn-search" class="btn btn-primary" value="Buscar"
-                        style="border-radius:0px; border:none;  width:100%; background:#3AA3E3; color:#fff;"       
-                        >
+                               style="border-radius:0px; border:none;  width:100%; background-color: #4a90e2;
+    border-color: #4a90e2; color:#fff;">
                     </div>
-                    <div class="form-group col-lg-1">&nbsp;</div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- alerta -->
-<div class="alert alert-warning alert-dismissible text-center hidden" id="alert-search" role="alert" style="margin-bottom: 0px;">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Opps!</strong> No se encontraron resultados, prueba otra vez.
-</div>
-<section style="height: 100%">
-    <div class="row">
-        <div class=" col-md-3" style="height: 100%">
-            <ul class="uls "  aria-labelledby="dropdownMenu1" style="margin-left:0px;margin-top: 14px; min-width: 300px;overflow: scroll; max-height: 100%;">
-                <center class="" id="loadTop">
-                    <br/>
-                    Cargando...
-                    <br/>
-                    <i class="fa fa-circle-o-notch fa-spin fa-2x" style="color:#3AA3E3;"></i>
-                    <br/>
-                </center>
-                <div id="topWuokers">
-                    
+                </form>
+            </div>
+            <!-- /fin section buscador -->
+            
+            <!-- Section resultados -->
+             
+                <div class="col-md-12">
+                     <ul class="uls list-group"  aria-labelledby="dropdownMenu1" >
+                        <center class="" id="loadTop">
+                            <br/>
+                            Cargando...
+                            <br/>
+                            <i class="fa fa-circle-o-notch fa-spin fa-2x" style="color:#3AA3E3;"></i>
+                            <br/>
+                        </center>
+                        <div id="topWuokers">
+
+                        </div>
+                        <div class="bg-info text-center" style="width:100%; height: 60px;margin-bottom: -9px;">
+                            <br/>
+                            <?php
+                             echo "Usuarios cerca de ti <i class='fa fa-map-marker'></i>";
+                            if(!$this->session->userdata("user_id")){
+                                //echo "Usuarios cerca de ti <i class='fa fa-maps'></i>";
+                            }
+                            ?>
+                        </div>
+                        <li role="separator" class="divider"></li>
+                    </ul>
                 </div>
-                <div class="bg-info text-center" style="width:100%; height: 60px;margin-bottom: -9px;">
-                    <br/>
-                    publicidad
-                </div>
-                <li role="separator" class="divider"></li>
-                <li class="text-center"><a href="#">Ver Todos</a></li>
-            </ul>
+            </div>
+            <!-- /fin section resultados-->
         </div>
-        <div class="col-md-9"style="margin:0px;">
-            <div class="container "id="map-search" style="width: 100%; height: 100%; margin: 0px;">
+        <!-- Section map -->
+        <div class="col-md-7 hidden-sm hidden-xs box-search" style="height:100%;">
+            <!-- alerta -->
+            <div class="alert alert-warning alert-dismissible text-center hidden" id="alert-search" role="alert" style="margin-bottom: 0px;">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <strong>Opps!</strong> No se encontraron resultados, prueba otra vez.
+            </div>
+            <div id="map-search" style="height:700px;">
                 <center>
                     <br/>
                     Buscando resultados
                     <br/>
-                    <i class="fa fa-circle-o-notch fa-spin fa-2x" style="color:#3AA3E3;"></i>
+                    <img src="<?php echo base_url();?>asset/img/loader_rnb.gif">
+                    <i class="fa fa-circle-o-notch fa-spin fa-2x hidden" style="color:#3AA3E3;"></i>
                 </center>
             </div>
         </div>
     </div>
-</section>
+</div>
+<style type="text/css">
+    .container-map{
+        position: absolute;
+        top: 67px;
+        bottom: 0;
+        right: 0;
+    }
+    #box-results{
+        position: fixed;
+        top: 67px;
+        left: 0;
+        bottom: 0;
+        overflow-y: scroll;
+        background-color: #F3F3F3;
+    }
+    .box-search{
+        position: fixed;
+        top: 66px;
+        right: 0;
+        left: auto;
+        bottom: 0;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .uls{
+        list-style:none;
+    }
+    #form-search{
+        margin-left: -15px;
+        margin-right: -15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        height: auto;
+    }
+</style>
+
+
+
 
 
 
