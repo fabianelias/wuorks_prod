@@ -62,7 +62,7 @@ Class Search extends CI_Controller{
         
         $this->load->view("includes/head", $data);
         $this->load->view("includes/nav_view");
-        $this->load->view("search/search_view",$data);
+        $this->load->view("search/search_view_v2",$data);
       //  $this->load->view("includes/footer");
     }
     
