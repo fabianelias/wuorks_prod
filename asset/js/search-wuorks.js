@@ -138,7 +138,8 @@ function createMarkers(){
 
                         google.maps.event.addListener(gMarkerWs, "click", function(){
                             perfilUsuario(result);
-                            //ginfoWuork.open(map,gMarkerWs);
+                            window.location.href = '#cont'+result.wuorks_key;
+                            $("#cont"+result.wuorks_key).hover();
                         });
                         
                         
@@ -176,11 +177,11 @@ function createMarkers(){
                                km += kms;
 
                              var top =
-                                    '<li class="topHover" style="border-bottom:1px solid #eee;">'+
-                                        '<div class="media" style="margin-left:5px;padding:5px;">'+
+                                    '<li class="topHover" id="cont'+result.wuorks_key+'"style="border-bottom:1px solid #eee;">'+
+                                        '<div class="media" style="margin-left:5px;padding:5px;padding-top:15px;margin-bottom: -10px;">'+
                                         ' <div class="media-left">'+
                                           '<a href="'+url_base+'wuokers/'+res+'/'+result.username+'/'+result.profession+'/'+result.key_profession+'?wk='+result.wuorks_key+'">'+
-                                            '<img class="media-object" src="'+url_base+'asset/img/user_avatar/'+result.avatar+'" alt="..." style="max-height: 50px; max-width:50px;">'+
+                                            '<img class="media-object img-thumbnail thumbnail" src="'+url_base+'asset/img/user_avatar/'+result.avatar+'" alt="'+result.username+'" style="height:100px; max-width:100px;">'+
                                          ' </a>'+
                                         ' </div>'+
                                        ' <div class="media-body">'+
@@ -189,8 +190,10 @@ function createMarkers(){
                                           '</a>'+
                                          ' '+result.profession+'.<br>'+km+''+
                                         '</div>'+
-                                        ' <div class="media-left text-center">'+
+                                        ' <div class="media-left text-center text-info">'+
                                           '<br/>&nbsp;<b>'+result.rating+'</b> '+
+                                          '<br/>&nbsp;<i class="fa fa-star-o" aria-hidden="true"></i> '+
+                                          '<br/>&nbsp;<small>Calificación</small>'+
                                         ' </div>'+
                                        // '<hr/>'+
                                       '</div>'+
@@ -204,7 +207,7 @@ function createMarkers(){
                     x++;
            });
            
-           $("#allTops").html("Ver todos ("+x+")");
+           $("#ttUser").html(x+" wuokers cerca de ti <i class='fa fa-map-marker'></i>");
        }else{
             $("#alert-search").removeClass("hidden");
             $("#loadTop").addClass("hidden");
@@ -223,7 +226,7 @@ function createMarkers(){
  ******************************************************************************/
 
 function perfilUsuario(result){
-    
+   
     var url_base = $("#url_base").val();
     var func     = "";
     var name     = "";
@@ -258,6 +261,3 @@ function perfilUsuario(result){
  * del codigo o del todo.
  * v1.0.
  ******************************************************************************/
-
-
-

@@ -30,7 +30,12 @@
                     <input type="hidden" name="type_user" id="type_user" value="<?php echo $type_user; ?>">
                 </div>
                 <hr/>
-                <input type="submit" id="btn-rating" name="btn-rating" class="btn btn-sm btn-primary" value="Calificar">
+                <a href="<?php echo base_url();?>profile/contract" class="btn btn-default btn-sm">
+                    <i class="fa fa-arrow-left"></i>
+                    Cancelar
+                </a>
+                &nbsp;
+                <input type="submit" id="btn-rating" name="btn-rating" class="btn btn-md btn-primary" value="Calificar a <?php echo $name_user; ?>">
             </form>
         </div>
     </div>

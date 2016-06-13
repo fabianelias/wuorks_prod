@@ -30,7 +30,6 @@
                     ?>
                 </div>
                 <li role="separator" class="divider"></li>
-                <!--<li class="text-center"><a href="#" id="allTops">Ver Todos</a></li>-->
             </ul>
         </div>
         <div class="col-lg-9">

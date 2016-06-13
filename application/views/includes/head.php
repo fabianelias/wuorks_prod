@@ -33,9 +33,6 @@
     <meta property="og:description"   content="Encontrar a un profesional nunca fue tan fácil" />
     <meta property="og:image"         content="https://www.wuorks.cl/asset/images-wuorks/logo-cl.png" />
 
-    
-    
-    
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v3"></script>
    
     <?php
@@ -49,13 +46,9 @@
                 echo "<script src='".base_url().$sc."' type='text/javascript'></script>\n";
             }
         ?>
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://harvesthq.github.io/chosen/chosen.jquery.js"></script>
     <script>
-          $(document).ready(function(){
-              //document.getElementById("company_category_chosen").style.width="100";
-          });
           $(function() {
             $('.chosen-select').chosen();
             $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
@@ -75,7 +68,9 @@
                 });
             });
         });
-
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
     </script>
 </head>
 
