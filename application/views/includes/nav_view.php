@@ -21,7 +21,7 @@
                     <li class=""style="border-left: 1px solid #e7e7e7; margin-right: 3px;">
                         <center>
                             <img src="<?php echo base_url(); ?>asset/img/user_avatar/<?php echo $this->session->userdata('avatar');?>"
-                                style="max-height:50px; max-width: 50px; margin-left: 5px;/*box-shadow: 0px 1px 1px #d0d4d9;*/"
+                                style="max-height:50px; max-width: 50px;/*box-shadow: 0px 1px 1px #d0d4d9;*/"
                                 class="img-responsive">
                         </center>
                     </li>

@@ -186,12 +186,12 @@ function createMarkers(){
                                         ' </div>'+
                                        ' <div class="media-body">'+
                                           '<a href="'+url_base+'wuokers/'+res+'/'+result.username+'/'+result.profession+'/'+result.key_profession+'?wk='+result.wuorks_key+'">'+
-                                                '<h4 class="media-heading">'+result.username+'<small>/ '+type+'</small></h4>'+
+                                                '<h4 class="media-heading username">'+result.username+'<small>/ '+type+'</small></h4>'+
                                           '</a>'+
-                                         ' '+result.profession+'.<br>'+km+''+
+                                         ''+result.profession+'.<br>'+km+''+
                                         '</div>'+
                                         ' <div class="media-left text-center text-info">'+
-                                          '<br/>&nbsp;<b>'+result.rating+'</b> '+
+                                          '<br/>&nbsp;<b class="username">'+result.rating+'</b> '+
                                           '<br/>&nbsp;<i class="fa fa-star-o" aria-hidden="true"></i> '+
                                           '<br/>&nbsp;<small>Calificación</small>'+
                                         ' </div>'+
