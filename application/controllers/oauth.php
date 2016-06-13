@@ -335,8 +335,8 @@ Class Oauth extends CI_Controller{
         
         $permissions = ['email']; // optional
         
-        $loginUrl = $helper->getLoginUrl('http://www.wuorks.cl/oauth/handle_facebook_login/', $permissions);
-       
+        $loginUrl = $helper->getLoginUrl('http://www.wuorks.cl/oauth/handle_facebook_login/', $permissions); // URL Prod
+        //$loginUrl = $helper->getLoginUrl(site_url('oauth/handle_facebook_login/'),$permissions); //URL LOCAL
         redirect($loginUrl);
         
         
@@ -344,12 +344,21 @@ Class Oauth extends CI_Controller{
     public function handle_facebook_login(){
         
         require './vendor/fb/src/Facebook/autoload.php';
-       
+        //Config app producción
         $fb = new Facebook\Facebook([
              'app_id' => '266809433657812',
              'app_secret' => 'bc616c376f3f5d28cb4e63e1bac3254c',
              'default_graph_version' => 'v2.5',
              ]);
+         
+        //Config app local
+        /*
+        $fb = new Facebook\Facebook([
+             'app_id' => '1036795289715314',
+             'app_secret' => 'e89dae8a228eb90c796dc57efb2e0303',
+             'default_graph_version' => 'v2.5',
+             ]);
+        */
         $helper = $fb->getRedirectLoginHelper();
         $fb->setDefaultAccessToken('{access-token}');
 
@@ -479,10 +488,8 @@ Class Oauth extends CI_Controller{
                 
                 $this->session->set_userdata($info['data'][0]);
                 redirect(base_url(), 'refresh');
-                    
-                }
                 
-                
+            }
         }else{
             $this->session->set_flashdata("error_2", "Error de facebook");
             redirect(base_url()."oauth/in");
@@ -510,8 +517,6 @@ Class Oauth extends CI_Controller{
      **************************************************************************/
     public function verify_account($email, $rand = ''){
         $this->curl->create($this->api_url."register/verify_account/email/".$email."/key/".$this->key_wuorks);
-        
-        
         
         $verify = $this->curl->execute();
         if($verify == true){

@@ -27,6 +27,7 @@
                 letter-spacing: 2px;
                 line-height: 17px; color:#fff;"       
                 >
+                <input type="hidden"  name="token" id="utf8" value="<?php echo md5('token_security');?>">
             </div>
             <div class="form-group col-lg-1">&nbsp;</div>
         </form>
@@ -79,14 +80,14 @@
                 Elegir a la persona correcta es dificil, por eso elige a los mejores wuokers, valora y comenta su trabajo en tiempo real.<br/><br/>
                 <i class="fa fa-3x fa-smile-o icon-home"></i>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 hidden-sm hidden-xs">
                 <img src="<?php echo base_url(); ?>asset/img/img-home-2.png" style="opacity: 0.8;">
             </div>
         </div>
         <div class="col-lg-12">
             <hr/>
              <!-- -->
-            <div class="col-lg-4 text-center">
+            <div class="col-lg-4 text-center hidden-sm hidden-xs">
                 <img src="<?php echo base_url(); ?>asset/img/img-home.png" style="opacity: 0.8;">
             </div>
              <div class="col-lg-6" style="padding-top:120px;">

@@ -1,6 +1,6 @@
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top" style="background-color: #fff; 
-    box-shadow: 0px 1px 1px #d0d4d9;">
-    <div class="container" style="margin-top: 8px;">
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top" style="background-color: #fff; min-height: 51px;
+    /*box-shadow: 0px 1px 1px #d0d4d9;*/">
+    <div class="container-fluid" style="margin-top: 0px;">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -18,20 +18,33 @@
                 if($this->session->userdata('id_user')){
                 ?>
                     <ul class="nav navbar-nav navbar-right">
-                    <li class="">
+                    <li class=""style="border-left: 1px solid #e7e7e7; margin-right: 3px;">
                         <center>
                             <img src="<?php echo base_url(); ?>asset/img/user_avatar/<?php echo $this->session->userdata('avatar');?>"
-                                style="max-height:50px; max-width: 50px; border: 2px solid #fbfbfb;box-shadow: 0px 1px 1px #d0d4d9;"
+                                style="max-height:50px; max-width: 50px; margin-left: 5px;/*box-shadow: 0px 1px 1px #d0d4d9;*/"
                                 class="img-responsive">
                         </center>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="<?php echo base_url(); ?>profile">
+                    <li style="border-right: 1px solid #e7e7e7;">
+                        <a class="page-scroll hidden-sm hidden-xs username" href="<?php echo base_url(); ?>profile"
+                        data-toggle="tooltip" data-placement="bottom" title="Ver perfil"   
+                        >
+                            <?php echo $this->session->userdata('username');?>
+                        </a>
+                        <a class="page-scroll hidden-md hidden-lg text-center username" href="<?php echo base_url(); ?>profile">
                             <?php echo $this->session->userdata('username');?>
                         </a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="<?php echo base_url(); ?>logout">Cerrar sesión</a>
+                        <a class="hidden-sm hidden-xs page-scroll" href="<?php echo base_url(); ?>logout"
+                        data-toggle="tooltip" data-placement="bottom" title="Cerrar sesión"   
+                        >
+                            <i class="fa fa-sign-out fa-lg fa-2x" aria-hidden="true"></i>
+                        </a>
+                        <a class="hidden-md hidden-lg page-scroll text-center" href="<?php echo base_url(); ?>logout">
+                           <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
+                           Cerrar sesión
+                        </a>
                     </li>
                 </ul>
                 <?php
@@ -116,5 +129,8 @@
         border-color: #4a90e2;
         letter-spacing: 2px;
         line-height: 17px;
+    }
+    .username{
+        font-weight: 300;
     }
 </style>
