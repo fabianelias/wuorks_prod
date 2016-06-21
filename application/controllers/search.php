@@ -50,7 +50,7 @@ Class Search extends CI_Controller{
         
        // $this->curl->create($this->api_url."search/search_wuorkers/wuork_area/".$wuorks."/region/".$region."/key/".$this->key_wuorks);
        //$results = $this->curl->execute();
-        
+        //echo $this->api_url."search/search_wuorkers/wuork_area/".$wuorks."/region/".$region."/key/".$this->key_wuorks;exit();
         //$data["results"] = $results;
         //Carga regiones
         $this->curl->create($this->api_url."regiones/obtRegiones/key/".$this->key_wuorks);
