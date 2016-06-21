@@ -1,4 +1,4 @@
-<div class="separator"style="height: 65px;">
+<div class="separator"style="height: 52px;">
     
 </div>
 <?php  
@@ -47,9 +47,9 @@ if($this->session->flashdata('mensajes')){
                               <hr/>
                               <h3 class="title text-center">Todavía no creas tu primera profesión , no pierdas el tiempo 
                                 <?php 
-                                if($i['address'] == "" || $i["commune"] == "" || $i["region"] == "" || $i["cell_phone_number"] == 0 || $i["rut"] == ""){
+                                if($i['address'] == "" || $i["commune"] == "" || $i["region"] == "" || $i["cell_phone_number"] == 0){
                                     echo "<tr>";
-                                    echo "<td><p class='btn btn-sm btn-warning'><a href='".base_url()."profile/editProfile' style='color:#fff;'><i class='fa fa-warning'></i> Es importante que completes tu datos</a></p></td>";
+                                    echo "<td><p class='btn btn-sm btn-warning'><a href='".base_url()."profile/editProfile?token=".md5("edit")."' style='color:#fff;'><i class='fa fa-warning'></i> Es importante que completes tu datos</a></p></td>";
                                     echo "</tr>";
                                 }else{
                                 ?>
@@ -66,7 +66,7 @@ if($this->session->flashdata('mensajes')){
                                   foreach ($p as $row){
                               ?>
                                   <div class="panel panel-default">
-                                      <div class="panel-heading">Profesión: <?php echo strtoupper($row["name_profession"]); ?><a href="<?php echo base_url()."profile/editProfession/".$row["key_profession"];?>" class="btn btn-sm btn-primary" style="margin-left:35px;">Editar Profesión</a></div>
+                                      <div class="panel-heading">Profesión: <?php echo strtoupper($row["name_profession"]); ?><a href="<?php echo base_url()."profile/editProfession/".$row["key_profession"]."?token=".md5("edit")."";?>" class="btn btn-sm btn-primary" style="margin-left:35px;">Editar Profesión</a></div>
                                     <div class="panel-body">
                                         <div class="table table-responsive col-md-4">
                                             <label><?php echo ucfirst($row["job_description"]); ?></label>

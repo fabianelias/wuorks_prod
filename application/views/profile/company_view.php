@@ -1,4 +1,4 @@
-<div class="separator"style="height: 65px;">
+<div class="separator"style="height: 52px;">
     
 </div>
 <?php  
@@ -85,7 +85,7 @@
                               <hr/>
                               <h3 class="title text-center">Todavía no creas tu perfil de empresa , no pierdas el tiempo 
                                   <?php 
-                                if($i['address'] == "" || $i["commune"] == "" || $i["region"] == "" || $i["cell_phone_number"] == 0 || $i["rut"] == ""){
+                                if($i['address'] == "" || $i["commune"] == "" || $i["region"] == "" || $i["cell_phone_number"] == 0){
                                     echo "<tr>";
                                     echo "<br/>";
                                     echo "<td><br/><p class='btn btn-sm btn-warning'><a href='".base_url()."profile/editProfile' style='color:#fff;'><i class='fa fa-warning'></i> Es importante que completes tu datos</a></p></td>";

@@ -1,6 +1,4 @@
-<div class="separator"style="height: 65px;">
-    
-</div>
+<div class="separator"style="height: 52px;"></div>
  <?php  
 if($this->session->flashdata('mensajes')){
 ?>
