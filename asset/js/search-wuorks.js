@@ -99,14 +99,13 @@ function createMarkers(){
        /************************************************************************
         *                               Perfiles
         ***********************************************************************/
-       
        if(result.res != ""){
            var x = 0;
            $.each(result.res, function(index, result){
                
                var objWuorkers = {
                        
-                        address : result.address +", "+ result.commune +", "+ result.region 
+                        address : result.address +" "+ result.commune //+" "+ result.region 
                                 
                    };
                    
@@ -149,7 +148,7 @@ function createMarkers(){
                         
                         
                         var orig = lat+","+lon;//"Los Presidentes 6922";
-                        var dest = result.address// +", "+ result.commune +", "+ result.region ;
+                        var dest = result.address+", "+ result.commune// +", "+ result.region ;
                         
                         
                         var km ="";

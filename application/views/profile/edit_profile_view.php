@@ -126,13 +126,18 @@
                                             <small>Fecha nacimiento</small>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <input type="text" name="rut" id="rut" class="form-control" value="<?php echo $i["rut"];?>"
-                                                   <?php 
-                                                   if(!empty($i["rut"])){
-                                                       echo "disabled";
-                                                   }
-                                                   ?>
-                                                   placeholder="R.U.T">
+                                            <?php 
+                                            if(!empty($i["rut"])){
+                                            ?>
+                                            <input type="hidden" name="rut" id="rut" class="form-control" value="<?php echo $i["rut"];?>">
+                                            <input type="text"class="form-control" value="<?php echo $i["rut"];?>" disabled="diseabled">
+                                            <?php
+                                            }else{
+                                            ?>
+                                            <input type="text" name="rut" id="rut" class="form-control" value="<?php echo $i["rut"];?>" laceholder="R.U.T">
+                                            <?php
+                                            }
+                                            ?>
                                             <small style="
                                                 color: #31708f;
                                             ">
