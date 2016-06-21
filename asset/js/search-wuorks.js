@@ -30,9 +30,14 @@ function fn_error(){
     
     // Opciones de configuración de google maps.
     var myOptions = {
-      zoom: 13,
+      zoom: 12,
       center: latlng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: true,
+      zoomControl: true,
+        zoomControlOptions: {
+        position: google.maps.ControlPosition.RIGHT_TOP
+        }
     };
     
     // Inicializador del mapa en el div asignado.
@@ -101,7 +106,7 @@ function createMarkers(){
                
                var objWuorkers = {
                        
-                        address : result.address //+", "+ result.commune +", "+ result.region 
+                        address : result.address +", "+ result.commune +", "+ result.region 
                                 
                    };
                    
