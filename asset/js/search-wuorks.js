@@ -210,6 +210,7 @@ function createMarkers(){
            $("#ttUser").html(x+" wuokers cerca de ti <i class='fa fa-map-marker'></i>");
        }else{
             $("#alert-search").removeClass("hidden");
+            $("#sinResultados").removeClass("hidden");
             $("#loadTop").addClass("hidden");
             $("#tops").removeClass("open");
         }

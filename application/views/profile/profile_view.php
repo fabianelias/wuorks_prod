@@ -1,4 +1,4 @@
-<div class="separator"style="height: 65px;">
+<div class="separator"style="height: 52px;">
     
 </div>
 <?php  

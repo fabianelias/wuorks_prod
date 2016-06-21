@@ -394,7 +394,7 @@ Class Profile extends CI_Controller{
         $this->form_validation->set_rules("address","Dirección","trim|required");
         $this->form_validation->set_rules("commune","Comuna","trim|required");
         $this->form_validation->set_rules("region","Región","trim|required");
-        $this->form_validation->set_rules("rut","Rut","trim|required|integer|min_length[8]|max_length[9]");
+        //$this->form_validation->set_rules("rut","Rut","trim|required|integer|min_length[8]|max_length[9]");
         $this->form_validation->set_rules("cell_phone_number","Nro. telefono","trim|required|integer");
         $this->form_validation->set_rules("gender","Genero","trim|required");
         $this->form_validation->set_message("required","%s es obligatorio");
@@ -693,6 +693,10 @@ Class Profile extends CI_Controller{
                 $data["profession"] = $professions[$i];
                 break;
             }
+        }
+        
+        if(empty($data["profession"])){
+            redirect(base_url("profile"));
         }
         
         $this->load->view("includes/head",$data);

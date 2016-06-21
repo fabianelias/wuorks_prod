@@ -10,7 +10,7 @@
                 </button>
                 <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>">
                     <!--<img src="<?php echo base_url(); ?>asset/img/logo-blanco.png" style="margin-top: -15px;height: 50px; opacity:.6;">-->
-                    <img src="<?php echo base_url(); ?>asset/img/logo-cl.png" class="l-2" style="background-size: 225px 40px; margin-top:-15px; width:180px; max-height:55px;">
+                    <img src="<?php echo base_url(); ?>asset/img/logo-cl.png" class="l-2" style="background-size: 225px 40px; margin-top:-12px; width:160px; max-height:50px;">
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -30,20 +30,22 @@
                         data-toggle="tooltip" data-placement="bottom" title="Ver perfil"   
                         >
                             <?php echo $this->session->userdata('username');?>
+                            <i class="fa fa-bars" aria-hidden="true"></i>
                         </a>
                         <a class="page-scroll hidden-md hidden-lg text-center username" href="<?php echo base_url(); ?>profile">
                             <?php echo $this->session->userdata('username');?>
+                            <i class="fa fa-bars" aria-hidden="true"></i>
                         </a>
                     </li>
                     <li>
-                        <a class="hidden-sm hidden-xs page-scroll" href="<?php echo base_url(); ?>logout"
+                        <a class="page-scroll hidden-sm hidden-xs page-scroll" style="top:5px;" href="<?php echo base_url(); ?>logout"
                         data-toggle="tooltip" data-placement="bottom" title="Cerrar sesión"   
                         >
-                            <i class="fa fa-sign-out fa-lg fa-2x" aria-hidden="true"></i>
+                            <i class="fa fa-sign-out fa-lg " aria-hidden="true"></i>
                         </a>
-                        <a class="hidden-md hidden-lg page-scroll text-center" href="<?php echo base_url(); ?>logout">
-                           <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
+                        <a class="hidden-md hidden-lg page-scroll text-center username" href="<?php echo base_url(); ?>logout">
                            Cerrar sesión
+                           <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
                         </a>
                     </li>
                 </ul>
@@ -57,8 +59,8 @@
                         <a class="page-scroll" href="#" data-toggle="modal" data-target="#login">Inicia sesión</a>
                         <a class="hidden page-scroll" href="<?php echo base_url(); ?>oauth/in">Inicia sesión</a>
                     </li>
-                    <li>
-                        <a class="hnav" href="<?php echo base_url(); ?>oauth/register">Registrate</a>
+                    <li style="background: #4a90e2;">
+                        <a class="hnav" style="color:#fbfbfb;" href="<?php echo base_url(); ?>oauth/register">Registrate</a>
                     </li>
                     <!--<li>
                         <a class="page-scroll" href="#portfolio">Empleos</a>

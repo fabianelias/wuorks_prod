@@ -1,7 +1,7 @@
-<div class="separator"style="height: 80px;">
+<div class="separator"style="height: 52px;">
     
 </div>
-<div class="container" style="margin-top: 20px;">
+<div class="container" style="margin-top: 20px;margin-bottom:70px;">
     <div class="row">
         <div class="col-md-6 col-lg-6 col-lg-offset-3 col-md-offset-3 change_pass text-center">
             <h3 class="title">Cambio de contraseña</h3>

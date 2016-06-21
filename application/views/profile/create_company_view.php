@@ -1,4 +1,4 @@
-<div class="separator"style="height: 80px;">   
+<div class="separator"style="height: 52px;">   
 </div>
 <div class="container" style="margin-top: 20px;">
     <div class="row">

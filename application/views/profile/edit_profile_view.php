@@ -1,4 +1,4 @@
-<div class="separator"style="height: 80px;">
+<div class="separator"style="height: 52px;">
     
 </div>
 <div class="container" style="margin-top: 20px;">
@@ -25,7 +25,7 @@
                                       <input type="hidden" name="avatar" id="avatar" value="<?php echo $i["avatar"]; ?>">
                                   </a>
                                   </h3> 
-                                  <button type="submit" name="change_avatar" id="change_avatar" class="btn btn-sm btn-primary">
+                                  <button type="submit" name="change_avatar" id="change_avatar" class="btn btn-sm btn-primary btn-block">
                                     Guardar avatar
                                   </button>
                               </form>
@@ -66,6 +66,11 @@
                                         <div class="form-group col-md-12">
                                             <input type="text" name="address" id="address" class="form-control" value="<?php echo $i["address"]; ?>" placeholder="Tu dirección ej: calle dos 2965">
                                             <div class="text-danger"><?php echo form_error('address');?></div>
+                                            <small style="
+                                                color: #31708f;
+                                            ">
+                                                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                                Es importante el número de tu dirección para que tu ubicación sea correcta. Ejemplo: Calle 1234, Providencia, Chile.</small>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <select name="region" id="region"  class="form-control">
@@ -91,10 +96,17 @@
                                         <div class="form-group col-md-6">
                                             <input type="text" name="cell_phone_number" id="cell_phone_number" class="form-control" value="<?php if($i["cell_phone_number"] == 0){echo "";}else{ echo $i["cell_phone_number"];} ?>" placeholder="Telefono">
                                             <div class="text-danger"><?php echo form_error('cell_phone_number');?></div>
+                                            <small style="
+                                                color: #31708f;
+                                            ">
+                                                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                                Tu telefono solo se compartira con la persona que te contrate</small>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <input type="text" name="telephone_number" id="telephone_number" class="form-control" value="<?php if($i["telephone_number"] == 0){echo "";}else{ echo $i["telephone_number"];} ?>" placeholder="Telefono opcional">
-                                            <small>Nro. de telefono opcional</small>
+                                            <small style="
+                                                color: #31708f;
+                                            ">Nro. de telefono opcional</small>
                                         </div>
                                         <hr/>
                                         
@@ -107,12 +119,25 @@
                                         <div class="text-danger"><?php echo form_error('gender');?></div>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <input type="date" name="birth_date" id="birth_date" class="form-control" value="<?php ?>" placeholder="Telefono opcional">
-                                            <small>(Fecha nacimiento)</small>
+                                            <?php
+                                            $fecha_nacimiento = date('Y-m-d',strtotime($i["birth_date"]));
+                                            ?>
+                                            <input type="date" name="birth_date" id="birth_date" class="form-control" value="<?php echo $fecha_nacimiento; ?>">
+                                            <small>Fecha nacimiento</small>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <input type="text" name="rut" id="rut" class="form-control" value="<?php echo $i["rut"];?>" placeholder="rut sin punto ni gion">
-                                            <small>(Esto lo hace más seguro)</small>
+                                            <input type="text" name="rut" id="rut" class="form-control" value="<?php echo $i["rut"];?>"
+                                                   <?php 
+                                                   if(!empty($i["rut"])){
+                                                       echo "disabled";
+                                                   }
+                                                   ?>
+                                                   placeholder="R.U.T">
+                                            <small style="
+                                                color: #31708f;
+                                            ">
+                                                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                                Información privada, no se compartirá con los usuarios.</small>
                                             <div class="text-danger"><?php echo form_error('rut');?></div>
                                         </div>
                                         <div class="form-group col-md-12">

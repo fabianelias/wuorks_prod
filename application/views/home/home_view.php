@@ -21,12 +21,13 @@
                 </select>
             </div>
             <div class="form-group col-lg-2">
-                <input type="submit" name="btn-search" id="btn-search" class="btn btn-primary" value="Buscar"
+                <button type="submit" name="btn-search" id="btn-search" class="btn btn-primary" value="Buscar"
                 style="border-radius:0px; border:none; height:50px; width:100%; background-color: #4a90e2;
                 border-color: #4a90e2;
                 letter-spacing: 2px;
-                line-height: 17px; color:#fff;"       
-                >
+                line-height: 17px; color:#fff;">
+                    Buscar
+                </button>
                 <input type="hidden"  name="token" id="utf8" value="<?php echo md5('token_security');?>">
             </div>
             <div class="form-group col-lg-1">&nbsp;</div>
@@ -130,6 +131,14 @@
         </div>
         <br/>
 </section>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#btn-search").click(function(){
+            $("#btn-search").html('<i class="fa fa-spinner fa-pulse fa-2x" style="color:#fbfbfb;"></i>');
+            
+        });
+    });
+</script>
 <style>
     .form-search{
         min-height: 50px;

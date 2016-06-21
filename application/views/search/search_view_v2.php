@@ -22,9 +22,13 @@
                         </select>
                     </div>
                     <div class="form-group col-lg-12">
-                        <input type="submit" name="btn-search" id="btn-search" class="btn btn-primary" value="Buscar"
-                               style="border-radius:0px; border:none;  width:100%; background-color: #4a90e2;
-    border-color: #4a90e2; color:#fff;">
+                        <button type="submit" name="btn-search" id="btn-search" class="btn btn-lg btn-primary" value="Buscar"
+                        style="border-radius:0px; border:none; width:100%; background-color: #4a90e2;
+                        border-color: #4a90e2;
+                        letter-spacing: 2px;
+                        line-height: 17px; color:#fbfbfb;">
+                            Buscar
+                        </button>
                         <input type="hidden"  name="token" id="utf8" value="<?php echo md5('token_security');?>">
                     </div>
                 </form>
@@ -52,6 +56,13 @@
                             <br/>
                             <br/>
                         </center>
+                         <center class="hidden" id="sinResultados">
+                            <br/>
+                            <br/>
+                            Sin resultados
+                            <br/>
+                            <br/>
+                        </center>
                         <div id="topWuokers">
 
                         </div>
@@ -69,7 +80,7 @@
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <strong>Opps!</strong> No se encontraron resultados, prueba otra vez.
             </div>
-            <div id="map-search" style="height:700px;">
+            <div id="map-search" style="height:100%;">
                 <center>
                     <br/>
                     Buscando resultados
@@ -149,3 +160,11 @@
     }
 </style>
 
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#btn-search").click(function(){
+            $("#btn-search").html('<i class="fa fa-spinner fa-pulse fa-lg" style="color:#fbfbfb;"></i>');
+            
+        });
+    });
+</script>
