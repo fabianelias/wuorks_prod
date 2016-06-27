@@ -37,6 +37,16 @@
                             <i class="fa fa-bars" aria-hidden="true"></i>
                         </a>
                     </li>
+                    <li style="border-right: 1px solid #e7e7e7; height:50px;">
+                        <a class="page-scroll hidden-sm hidden-xs page-scroll" style="top:5px;" href="<?php echo base_url(); ?>?buscar=Wuokers"
+                        data-toggle="tooltip" data-placement="bottom" title="Buscar Wuokers">
+                            <i class="fa fa-search fa-lg " aria-hidden="true"></i>
+                        </a>
+                        <a class="hidden-md hidden-lg page-scroll text-center username" href="<?php echo base_url(); ?>?buscar=Wuokers"">
+                           Buscar Wuokers
+                           <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+                        </a>
+                    </li>
                     <li>
                         <a class="page-scroll hidden-sm hidden-xs page-scroll" style="top:5px;" href="<?php echo base_url(); ?>logout"
                         data-toggle="tooltip" data-placement="bottom" title="Cerrar sesión"   

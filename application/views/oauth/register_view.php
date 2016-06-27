@@ -3,12 +3,22 @@
 </div>
 <div class="container" style="margin-top: 30px;" style="">
     <div class="row">
-        <div class="col-md-5 col-lg-5">
-          <form action="<?php echo base_url(); ?>oauth/registerUser" method="post" accept-charset="UTF-8" role="form">
-              <br/>
+        <div class="col-lg-offset-3 col-md-offset-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <br/>
               <center>
               <h3 class="title">¡Registrate gratis!</h3>
               </center>
+            <form action="<?php echo base_url(); ?>oauth/facebook" method="post" accept-charset="UTF-8" role="form">
+                <div class="form-group">
+                    <button class="btn buttons-row btn-oauth btn-block" type="submit">
+                        <i class="fa fa-facebook "></i>
+                        &nbsp;
+                        Ingresa con Facebook <small>(Solo profesionales)</small>
+                    </button>                            
+                </div>
+            </form>
+          <form action="<?php echo base_url(); ?>oauth/registerUser" method="post" accept-charset="UTF-8" role="form">
+               <hr/>
                 <br/>
                 <div class="form-input checksenlinea">
                     <div class="pull-right">
@@ -20,7 +30,6 @@
                         <input type="radio" name="typeUser" id="typeUser" value="1" checked=""> 
                     </div>
                     <br/>
-                    <hr/>
                 </div>
                <div class="form-group">
                    <input type="text" name="email" id="email" class="form-control" placeholder="Email" value="<?php echo set_value('email'); ?>" required="">
@@ -58,23 +67,10 @@
                     <br/>
                     <input type="submit" name="register" id="register" class="btn btn-primary btn-block " style=""value="Registrarme">
                </div>
+                <a href="<?php echo base_url();?>oauth/in" style="color:#fbfbfb;">Ya tengo cuenta</a>
             </form> 
-            
-            <form action="<?php echo base_url(); ?>oauth/facebook" method="post" accept-charset="UTF-8" role="form">
-                <div class="form-group">
-                    <button class="btn buttons-row btn-oauth btn-block" type="submit">
-                        <i class="fa fa-facebook "></i>
-                        &nbsp;
-                        Ingresa con Facebook <small>(Solo profesionales)</small>
-                    </button>                            
-                </div>
-            </form>
-            
         </div>
-        <div class="col-lg-1">
-            &nbsp;
-        </div>
-        <div class="col-lg-6 img-responsive hidden-xs hidden-sm" style="background:#fff;">
+        <div class="col-lg-6 col-md-6 col-sm-6 img-responsive hidden hidden-xs hidden-sm" style="background:#fff;">
             <img src="<?php echo base_url(); ?>asset/img/img-register.jpg" style="max-height: 700px;width:auto;">
         </div>
     </div>

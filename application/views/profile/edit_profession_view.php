@@ -38,6 +38,12 @@
                                     </div>
                                     <form name="form-create-profession" id="form-create-profession" method="POST" accept-charset="utf8" action="<?php echo base_url(); ?>profile/editProfession1/<?php echo $profession["key_profession"]; ?>">
                                         <div class="form-group col-md-6">
+                                            <small style="
+                                                color: #31708f;
+                                            ">
+                                                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                                ¿Que profesión realizas?
+                                            </small>
                                             <select name="profession" id="profession" class="form-control"  disabled >
                                                  <option value="">
                                                  <?php
@@ -51,6 +57,12 @@
                                             <div class="text-danger"><?php echo form_error('name_profession');?></div>
                                         </div>
                                         <div class="form-group col-md-6">
+                                            <small style="
+                                                color: #31708f;
+                                            ">
+                                                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                                ¿En donde puedes trabajar?
+                                            </small>
                                             <select name="workplace" id="workplace" class="form-control">
                                                 <option value="">¿Donde puedes trabajar?</option>
                                                 <option value="1" <?php if($profession["workplace"] == 1){echo "selected";}?>>Todo chile</option>
@@ -60,7 +72,13 @@
                                             <div class="text-danger"><?php echo form_error('region');?></div>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <textarea name="job_description" id="job_description" class="form-control" placeholder="Descripción detallada de tu servicio"><?php echo $profession["job_description"] ?></textarea>
+                                            <small style="
+                                                color: #31708f;
+                                            ">
+                                                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                                Describe tu servicio
+                                            </small>
+                                            <textarea name="job_description" rows="10" cols="10" id="job_description" class="form-control" placeholder="Descripción detallada de tu servicio"><?php echo $profession["job_description"] ?></textarea>
                                             <div class="text-danger"><?php echo form_error('job_description');?></div>
                                         </div>
                                         <hr/>

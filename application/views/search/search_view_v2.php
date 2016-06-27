@@ -8,11 +8,11 @@
             <div class="row">
             <div class="col-md-12" style="border-bottom: 1px solid #e7e7e7;/*margin-bottom:10px;*/">
                 <form name="form-search" id="form-search"  action="<?php echo base_url(); ?>search"  method="GET">
-                    <div class="form-group col-lg-12">
+                    <div class="form-group col-lg-6 col-md-6">
                         <input type="hidden"  name="utf8" id="utf8" value="✓">
                         <input name="work_area" id="work_area" class="form-control form-search" value="<?php echo $_GET['work_area']; ?>" placeholder="¿Qué profesional necesitas?">
                     </div>
-                    <div class="form-group col-lg-12">
+                    <div class="form-group col-lg-6 col-md-6">
                         <select name="work_region" id="work_region" class="form-control form-search">
                             <?php
                             foreach ($regiones as $reg) {
@@ -21,7 +21,7 @@
                             ?>
                         </select>
                     </div>
-                    <div class="form-group col-lg-12">
+                    <div class="form-group col-lg-12 col-md-12">
                         <button type="submit" name="btn-search" id="btn-search" class="btn btn-lg btn-primary" value="Buscar"
                         style="border-radius:0px; border:none; width:100%; background-color: #4a90e2;
                         border-color: #4a90e2;
@@ -74,7 +74,7 @@
             <!-- /fin section resultados-->
         </div>
         <!-- Section map -->
-        <div class="col-md-6 hidden-sm hidden-xs box-search" style="height:100%;">
+        <div class="col-md-6 hidden-sm hidden-xs box-search" style="height:100%; background-color: #fbfbfb;">
             <!-- alerta -->
             <div class="alert alert-warning alert-dismissible text-center hidden" id="alert-search" role="alert" style="margin-bottom: 0px;">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

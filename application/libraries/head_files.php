@@ -26,7 +26,8 @@ Class Head_files{
     public function search(){
         
         $files["scripts"] = array(
-            '0' => 'asset/js/search-wuorks.js'
+            '0' => 'asset/js/search-wuorks.js',
+            '1' => 'asset/js/creative.js'
         );
         
         $files["styles"]  = array(
@@ -55,8 +56,8 @@ Class Head_files{
     public function register(){
         
         $files["scripts"] = array(
-           '0' => 'asset/js/sweet-alert.js',
-           '1' => 'asset/js/oauth.js'
+           //'0' => 'asset/js/sweet-alert.js',
+           '0' => 'asset/js/oauth.js'
         );
         
         $files["styles"]  = array(

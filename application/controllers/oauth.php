@@ -215,7 +215,7 @@ Class Oauth extends CI_Controller{
         $this->load->view("includes/head",$data);
         $this->load->view("includes/nav_view");
         $this->load->view("oauth/register_view");
-        //$this->load->view("includes/footer");
+        $this->load->view("includes/footer");
         
 
     }

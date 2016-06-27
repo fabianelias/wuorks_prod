@@ -38,6 +38,7 @@
     <!-- Plugin JavaScript -->
     <script src="<?php echo base_url(); ?>asset/js/jquery.easing.min.js"></script>
     <script src="<?php echo base_url(); ?>asset/js/jquery.fittext.js"></script>
+    <script src="<?php echo base_url(); ?>asset/js/creative.js"></script>
     <script src="<?php echo base_url(); ?>asset/js/wow.min.js"></script>
 
     
