@@ -1,6 +1,12 @@
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top" style="background-color: #fff; min-height: 51px;
-    /*box-shadow: 0px 1px 1px #d0d4d9;*/">
-    <div class="container-fluid" style="margin-top: 0px;">
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top" style="background-color: #fff; min-height: 52px;">
+    <?php 
+    if($this->session->userdata('id_user')){
+        $class = "container-fluid";
+    }else{
+        $class = "container";
+    }
+    ?>
+    <div class="<?php echo $class; ?>" style="margin-top: 0px;">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -15,13 +21,14 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <?php 
+                //MENU USUARIO CONECTADO
                 if($this->session->userdata('id_user')){
                 ?>
                     <ul class="nav navbar-nav navbar-right">
                     <li class=""style="border-left: 1px solid #e7e7e7; margin-right: 3px;">
                         <center>
                             <img src="<?php echo base_url(); ?>asset/img/user_avatar/<?php echo $this->session->userdata('avatar');?>"
-                                style="max-height:50px; max-width: 50px;/*box-shadow: 0px 1px 1px #d0d4d9;*/"
+                                style="max-height:50px; max-width: 50px;"
                                 class="img-responsive">
                         </center>
                     </li>
@@ -61,16 +68,27 @@
                 </ul>
                 <?php
                 }else{
+                    //MENU USUARIO NO CONECTADO
                 ?>
                 <ul class="nav navbar-nav navbar-right">
                     <li style="width:30px; height: 30px;">
                     </li>
                     <li>
-                        <a class="page-scroll" href="#" data-toggle="modal" data-target="#login">Inicia sesión</a>
+                        <a class="page-scroll" href="#" data-toggle="modal" data-target="#login" style="font-weight: 300;">Inicia sesión</a>
                         <a class="hidden page-scroll" href="<?php echo base_url(); ?>oauth/in">Inicia sesión</a>
                     </li>
-                    <li style="background: #4a90e2;">
-                        <a class="hnav" style="color:#fbfbfb;" href="<?php echo base_url(); ?>oauth/register">Registrate</a>
+                    <li>
+                        <a class="hidden-sm hidden-xs" style="
+                            color: #fbfbfb;
+                            background: #2895f1;
+                            padding: 5 20px;
+                            margin-top: 9px;
+                            border: 1px solid #288feb;
+                            border-radius: 3px;
+                            font-weight: 300;
+                           "
+                           href="<?php echo base_url(); ?>oauth/register">Registrate</a>
+                        <a class="hidden-lg hidden-md" style="font-weight: 300;" href="<?php echo base_url(); ?>oauth/register">Registrate</a>
                     </li>
                     <!--<li>
                         <a class="page-scroll" href="#portfolio">Empleos</a>
@@ -84,7 +102,10 @@
         </div>
         <!-- /.container-fluid -->
 </nav>
-
+<?php 
+//SOLO SE MUESTRA SI NO EXISTE SESIÓN CREADA
+if(!$this->session->userdata('id_user')){  
+?>
 <!-- Modal -->
 <div class="modal fade" id="login" tabindex="-1" style="margin-top:80px;"role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -121,13 +142,15 @@
       </div>
       <div class="modal-footer">
           <center>
-              <a href="#" class="" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></a>
+              <a href="#" data-dismiss="modal">Cancelar <i class="fa fa-times"></i></a>
           </center>
       </div>
     </div>
   </div>
 </div>
-
+<?php 
+}
+?>
 <style>
     .hnav{
         border: 1px solid #2895F1;

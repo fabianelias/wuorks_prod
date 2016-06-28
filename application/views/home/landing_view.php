@@ -1,39 +1,38 @@
-<section class="" style="background-color:#ffffff;">
+<section class="" style="background-color:#fff;">
     <div class="container">
-        <div class="row" style="height: 500px; margin-top:100px; background-color: #fff;background: url('./asset/img/banner-portada.png') center;">
-        <div class="col-lg-10 col-lg-offset-1 text-center">
-            <br/>
-            <h2 class="title">NUNCA FUE TAN FÁCIL ENCONTRAR A UN PROFESIONAL</h2>
-            <br>
-            <form name="form-search" id="form-search" action="<?php echo base_url(); ?>search" method="GET">
-            <div class="form-group col-lg-1">&nbsp;</div>
-            <div class="form-group col-lg-5 col-md-5 col-sm-5">
-                 <input type="hidden"  name="utf8" id="utf8" value="✓">
-                 <input name="work_area" id="work_area" class="form-control form-search" value="" placeholder="¿Qué profesional necesitas? ej: Profesor, soldador...">
+        <div class="row" style="height: 500px;margin-top:100px;background-color: #fff;background: url('./asset/img/banner-portada.png') center;">
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+                <br/>
+                <h2 class="title">NUNCA FUE TAN FÁCIL ENCONTRAR A UN PROFESIONAL</h2>
+                <br>
+                <form name="form-search" id="form-search" action="<?php echo base_url(); ?>search" method="GET">
+                <div class="form-group col-lg-1">&nbsp;</div>
+                <div class="form-group col-lg-5 col-md-5 col-sm-5">
+                     <input type="hidden"  name="utf8" id="utf8" value="✓">
+                     <input name="work_area" id="work_area" class="form-control form-search" value="" placeholder="¿Qué profesional necesitas? ej: Profesor, soldador...">
+                </div>
+                <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                    <select name="work_region" id="work_region" class="form-control form-search">
+                        <?php
+
+                        foreach ($regiones as $reg){
+                            echo '<option value="'.$reg["id_region"].'">'.$reg["nombre"].'</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="form-group col-lg-2 col-md-2 col-sm-3">
+                    <button type="submit" name="btn-search" id="btn-search" class="btn btn-wuorks" value="Buscar"
+                    style="border-radius:0px; border:none; height:50px; width:100%; 
+                    letter-spacing: 2px;
+                    line-height: 17px; color:#fff;">
+                        Buscar
+                    </button>
+                    <input type="hidden"  name="token" id="utf8" value="<?php echo md5('token_security');?>">
+                </div>
+                <div class="form-group col-lg-1">&nbsp;</div>
+            </form>
             </div>
-            <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                <select name="work_region" id="work_region" class="form-control form-search">
-                    <?php
-                    
-                    foreach ($regiones as $reg){
-                        echo '<option value="'.$reg["id_region"].'">'.$reg["nombre"].'</option>';
-                    }
-                    ?>
-                </select>
-            </div>
-            <div class="form-group col-lg-2 col-md-2 col-sm-3">
-                <button type="submit" name="btn-search" id="btn-search" class="btn btn-primary" value="Buscar"
-                style="border-radius:0px; border:none; height:50px; width:100%; background-color: #4a90e2;
-                border-color: #4a90e2;
-                letter-spacing: 2px;
-                line-height: 17px; color:#fff;">
-                    Buscar
-                </button>
-                <input type="hidden"  name="token" id="utf8" value="<?php echo md5('token_security');?>">
-            </div>
-            <div class="form-group col-lg-1">&nbsp;</div>
-        </form>
-        </div>
     </div>
     </div>
     
@@ -45,10 +44,8 @@
             </a>
         </center>
     </div>
-    
 </section>
-<section class="" style="background-color:#fff;">
-    <hr/>
+<section class="" style="background-color:#fff; border-top: 1px solid #eee;">
     <div class="container">
         <div class="row  text-center">
         <div class="col-lg-12 title1" id="how">

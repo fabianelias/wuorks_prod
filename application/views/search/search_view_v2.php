@@ -22,9 +22,8 @@
                         </select>
                     </div>
                     <div class="form-group col-lg-12 col-md-12">
-                        <button type="submit" name="btn-search" id="btn-search" class="btn btn-lg btn-primary" value="Buscar"
-                        style="border-radius:0px; border:none; width:100%; background-color: #4a90e2;
-                        border-color: #4a90e2;
+                        <button type="submit" name="btn-search" id="btn-search" class="btn btn-lg btn-wuorks" value="Buscar"
+                        style="border-radius:0px; border:none; width:100%;
                         letter-spacing: 2px;
                         line-height: 17px; color:#fbfbfb;">
                             Buscar
