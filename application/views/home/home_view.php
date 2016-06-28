@@ -1,4 +1,4 @@
-<section class="container" style="height: 500px; margin-top:100px; background: url('./asset/img/banner-portada.png') center;" >
+<section class="container" style="height: 500px; margin-top:100px; background-color: #fff;background: url('./asset/img/banner-portada.png') center;" >
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1 text-center">
             <br/>
@@ -33,14 +33,15 @@
             <div class="form-group col-lg-1">&nbsp;</div>
         </form>
         </div>
+        <div class="col-md-12 text-center"><a class="page-scroll" href="#how">Saber más</a></div>
     </div>
 </section>
 <section class="bg-info">
     <div class="container-fluid">
         <div class="row  text-center">
-        <div class="col-lg-12">
+        <div class="col-lg-12" id="how">
             <br/>
-            <h2 class="title">¿COMO FUNCIONA?</h2>
+            <h2 class="title">Cómo funciona</h2>
             <br/>
         </div>
             <div class="col-lg-4 ">
@@ -152,6 +153,11 @@
     .title{
         line-height: 1.4;
         font-size: 28px;
+        font-weight: 300;
+        color: #47525d;
+    }
+    .title1{
+        line-height: 1.4;
         font-weight: 300;
         color: #47525d;
     }

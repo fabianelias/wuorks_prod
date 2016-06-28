@@ -10,13 +10,15 @@
                     <input name="password" id="password" type="password" class="form-control" placeholder="Nueva contraseña">
                     <div class="text-danger"><?php echo form_error('password');?></div>
                     <br/>
-                    <input name="password_re" id="password_re" type="password" class="form-control" placeholder="Nueva contraseña">
+                    <input name="password_re" id="password_re" type="password" class="form-control" placeholder="Repite nueva contraseña">
                     <div class="text-danger"><?php echo form_error('password_re');?></div>
                     <hr/>
                     <input type="submit" name="change_pass" id="change_pass" class="btn btn-block btn-primary" value="Cambiar clave">
                     <br/>
                 </div>
             </form>
+            <a href="<?php echo base_url();?>profile" class="btn btn-default btn-block btn-sm">Cancelar</a>
+            <br/>
         </div>
     </div>
     
