@@ -1,6 +1,6 @@
 <section class="" style="background-color:#fff;">
     <div class="container">
-        <div class="row" style="height: 500px;margin-top:100px;background-color: #fff;background: url('./asset/img/banner-portada.png') center;">
+        <div class="row" style="height: 450px;margin-top:100px;background-color: #fff;background: url('./asset/img/banner-portada.png') center;">
             <div class="col-lg-10 col-lg-offset-1 text-center">
                 <br/>
                 <h2 class="title">NUNCA FUE TAN FÁCIL ENCONTRAR A UN PROFESIONAL</h2>
@@ -36,7 +36,7 @@
     </div>
     </div>
     
-    <div class="hidden-xs hidden-sm text-center" style="position:absolute; bottom: 50px;left: 48%;">
+    <div class="hidden-xs hidden-sm text-center" style="/*position:absolute; bottom: 50px;*/left: 48%;">
         <center>
             <a class="page-scroll titlea" href="#how" style="bottom:0px;">
                 Saber más<br/>
@@ -75,7 +75,7 @@
                 <h4 class="sub-title">
                 Necesitas un profesional
                 </h4>
-                Necesitas un profesional, busca y selecciona en el mapa al que mejor te parezca.<br/>
+                Busca y selecciona en el mapa el Wuokers más cercano o mejor evaluado cerca de ti.<br/>
                 <i class=" hidden fa fa-3x fa-check icon-home"></i>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-sm-4 title1">
