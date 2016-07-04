@@ -62,7 +62,7 @@
             <div class="col-lg-12"><br/></div>
             
             <div class="col-lg-4 col-md-4 col-sm-4 col-sm-4 title1">
-                <img src="<?php echo base_url();?>asset/img/pass1.png">
+                <img src="<?php echo base_url();?>asset/img/pass1.png" alt="Wuorks" class="sr-icons">
                 <h4 class="sub-title">
                 Sabemos que eres muy bueno
                 </h4>
@@ -71,7 +71,7 @@
                 <i class=" hidden fa fa-3x fa-thumbs-o-up icon-home"></i>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-sm-4 title1">
-                <img src="<?php echo base_url();?>asset/img/pass2.png">
+                <img src="<?php echo base_url();?>asset/img/pass2.png" alt="Wuorks" class="">
                 <h4 class="sub-title">
                 Necesitas un profesional
                 </h4>
@@ -79,7 +79,7 @@
                 <i class=" hidden fa fa-3x fa-check icon-home"></i>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-sm-4 title1">
-                <img src="<?php echo base_url();?>asset/img/pass3.png">
+                <img src="<?php echo base_url();?>asset/img/pass3.png" alt="Wuorks" class="">
                 <h4 class="sub-title">
                 Valora el trabajo de un Wuokers
                 </h4> 
@@ -119,14 +119,14 @@
                 <i class="fa fa-3x fa-smile-o icon-home"></i>
             </div>
             <div class="col-lg-4 hidden-sm hidden-xs">
-                <img src="<?php echo base_url(); ?>asset/img/img-home-2.png" style="opacity: 0.8;">
+                <img src="<?php echo base_url(); ?>asset/img/img-home-2.png" alt="Wuorks" class="img-responsive" style="opacity: 0.8;">
             </div>
         </div>
         <div class="col-lg-12">
             <hr/>
              <!-- -->
             <div class="col-lg-4 col-md-4 text-center hidden-sm hidden-xs">
-                <img src="<?php echo base_url(); ?>asset/img/img-home.png" style="opacity: 0.8;">
+                <img src="<?php echo base_url(); ?>asset/img/img-home.png" alt="Wuorks" class="img-responsive" style="opacity: 0.8;">
             </div>
              <div class="hidden-sm hidden-xs" style="padding-top:120px;"></div>
              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 title1">

@@ -34,7 +34,7 @@ Class Search extends CI_Controller{
      **************************************************************************/
     
     public function index(){
-        sleep(1);
+        //sleep(1);
         $wuorks = $this->input->get("work_area");
         $wuorks = trim($wuorks);
         $wuorks = strtolower($wuorks);
