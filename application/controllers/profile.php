@@ -24,7 +24,7 @@ Class Profile extends CI_Controller{
         $this->api_url    = $this->config->item("api_wuorks");
         $this->id_user    = $this->session->userdata("id_user");
         
-        //error_reporting(0);
+        error_reporting(0);
     }
     
     function very_sesion(){
@@ -826,12 +826,12 @@ Class Profile extends CI_Controller{
 
             $this->load->library('upload', $config);
 
-            if ( ! $this->upload->do_upload()){
+            if (!$this->upload->do_upload()){
                 
                     $error = array('error' => $this->upload->display_errors());
-                   
-                    $this->session->set_flashdata('mensajes', 'Error al cambiar la imagens');
-                    //redirect(base_url().'profile/editProfile','refresh');
+                   // print_r($error);
+                    $this->session->set_flashdata('mensajes', 'Error al cambiar la imagen');
+                    redirect(base_url().'profile/editProfile','refresh');
                     
             }
             else
@@ -849,15 +849,17 @@ Class Profile extends CI_Controller{
                         
                         if($avatar != "wuorks-not-avatar.png" && $avatar != "wuorks_avatar_men.png" && $avatar != "wuorks_avatar_women.png"){
                            unlink('./asset/img/user_avatar/'.$this->input->post("avatar"));
+                           //echo "error_14";
                         }else{
-                           
+                          // echo "error_12";
                         }
-                        
+                        //echo "error_1";
+                        $this->session->set_userdata('avatar',$new_image);
                         $this->session->set_flashdata('mensajes', 'La imagen se ha cambiado correctamente');
                         redirect(base_url().'profile','refresh');
                         
                     }else{
-                        
+                       // echo "error_2";
                         $this->session->set_flashdata('mensajes', 'Error al cambiar la imagen');
                         redirect(base_url().'profile/editProfile','refresh');
                         

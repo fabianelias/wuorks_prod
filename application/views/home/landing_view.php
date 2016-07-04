@@ -62,7 +62,7 @@
             <div class="col-lg-12"><br/></div>
             
             <div class="col-lg-4 col-md-4 col-sm-4 col-sm-4 title1">
-                <img src="<?php echo base_url();?>asset/img/pass1.png">
+                <img src="<?php echo base_url();?>asset/img/pass1.png" alt="Wuorks" class="sr-icons">
                 <h4 class="sub-title">
                 Sabemos que eres muy bueno
                 </h4>
@@ -71,7 +71,7 @@
                 <i class=" hidden fa fa-3x fa-thumbs-o-up icon-home"></i>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-sm-4 title1">
-                <img src="<?php echo base_url();?>asset/img/pass2.png">
+                <img src="<?php echo base_url();?>asset/img/pass2.png" alt="Wuorks" class="">
                 <h4 class="sub-title">
                 Necesitas un profesional
                 </h4>
@@ -79,7 +79,7 @@
                 <i class=" hidden fa fa-3x fa-check icon-home"></i>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-sm-4 title1">
-                <img src="<?php echo base_url();?>asset/img/pass3.png">
+                <img src="<?php echo base_url();?>asset/img/pass3.png" alt="Wuorks" class="">
                 <h4 class="sub-title">
                 Valora el trabajo de un Wuokers
                 </h4> 
@@ -116,25 +116,36 @@
             <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-lg-offset-2 title1">
                 <h4 class="sub-title">¡Reputación profesional!</h4>
                 Elegir a la persona correcta es dificil, por eso elige a los mejores wuokers, valora y comenta su trabajo en tiempo real.<br/><br/>
-                <i class="fa fa-3x fa-smile-o icon-home"></i>
+                <i class="fa fa-2x icon-home fa-star-o"></i>
+                <i class="fa fa-3x icon-home fa-star-o"></i>
+                <i class="fa fa-2x icon-home fa-star-o"></i>
+                <br>
+                <br>
+                <?php
+                if(!$this->session->userdata("id_user")){
+                ?>
+                  <a href="<?php echo base_url(); ?>oauth/register" style="border: 1px solid #2895f1; border-radius: 4px; color: #2895f1;padding: 8px; text-decoration: none;">Registrate gratis</a>       
+                <?php
+                }
+                ?>
             </div>
             <div class="col-lg-4 hidden-sm hidden-xs">
-                <img src="<?php echo base_url(); ?>asset/img/img-home-2.png" style="opacity: 0.8;">
+                <img src="<?php echo base_url(); ?>asset/img/img-home-2.png" alt="Wuorks" class="img-responsive" style="opacity: 0.8;">
             </div>
         </div>
         <div class="col-lg-12">
             <hr/>
              <!-- -->
             <div class="col-lg-4 col-md-4 text-center hidden-sm hidden-xs">
-                <img src="<?php echo base_url(); ?>asset/img/img-home.png" style="opacity: 0.8;">
+                <img src="<?php echo base_url(); ?>asset/img/img-home.png" alt="Wuorks" class="img-responsive" style="opacity: 0.8;">
             </div>
              <div class="hidden-sm hidden-xs" style="padding-top:120px;"></div>
              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 title1">
-                <h4 class="sub-title">Tienes que hacerte ver</h4>
-                Mostrar tus servicios de forma transparente, que te califiquen, ganar un dinerillo extra y mucho más... 
+                <h4 class="sub-title">Muestrate</h4>
+                Mostrar tus servicios de forma transparente, que te califiquen, ganar un dinero extra y mucho más... 
                 <br/>
                 <br/>
-                <i class="fa fa-3x fa-eye icon-home"></i>
+                <i class="fa fa-3x fa-map-marker icon-home"></i>
             </div>
         </div>  
         </div>
@@ -158,7 +169,7 @@
                 <?php
                 }else{
                 ?>
-                ¡Comienza a ganar dinero con que mejor haces!
+                ¡Comienza a ganar dinero con lo que mejor haces!
                 <?php
                 }
                 ?>

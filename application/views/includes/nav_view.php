@@ -14,9 +14,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>">
+                <a class="navbar-brand page-scroll img-responsive" href="<?php echo base_url(); ?>">
                     <!--<img src="<?php echo base_url(); ?>asset/img/logo-blanco.png" style="margin-top: -15px;height: 50px; opacity:.6;">-->
-                    <img src="<?php echo base_url(); ?>asset/img/logo-cl.png" class="l-2" style="background-size: 225px 40px; margin-top:-12px; width:160px; max-height:50px;">
+                    <img class="small" alt="Wuorks" src="<?php echo base_url(); ?>asset/img/logo-cl.png" style="margin-top:-14px; width:160px; max-height:50px;">
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -25,16 +25,17 @@
                 if($this->session->userdata('id_user')){
                 ?>
                     <ul class="nav navbar-nav navbar-right">
-                    <li class=""style="border-left: 1px solid #e7e7e7; margin-right: 3px;">
+                    <li class=""style="/*border-left: 1px solid #e7e7e7;margin-right: 3px;*/">
                         <center>
                             <img src="<?php echo base_url(); ?>asset/img/user_avatar/<?php echo $this->session->userdata('avatar');?>"
-                                style="max-height:50px; max-width: 50px;"
-                                class="img-responsive">
+                                style="height:35px;width:35px; margin-top:9px;"
+                                class="img-responsive img-circle">
                         </center>
                     </li>
-                    <li style="border-right: 1px solid #e7e7e7;">
+                    <li style="border-right: 1px solid #e7e7e7; padding-left: 1px; padding-right:5px;">
                         <a class="page-scroll hidden-sm hidden-xs username" href="<?php echo base_url(); ?>profile"
-                        data-toggle="tooltip" data-placement="bottom" title="Ver perfil"   
+                        data-toggle="tooltip" data-placement="bottom" title="Ver perfil" 
+                        style="padding-left: 5px;padding-right: 5px;"
                         >
                             <?php echo $this->session->userdata('username');?>
                             <i class="fa fa-bars" aria-hidden="true"></i>
@@ -49,7 +50,7 @@
                         data-toggle="tooltip" data-placement="bottom" title="Buscar Wuokers">
                             <i class="fa fa-search fa-lg " aria-hidden="true"></i>
                         </a>
-                        <a class="hidden-md hidden-lg page-scroll text-center username" href="<?php echo base_url(); ?>?buscar=Wuokers"">
+                        <a class="hidden-md hidden-lg page-scroll text-center username" href="<?php echo base_url(); ?>?buscar=Wuokers">
                            Buscar Wuokers
                            <i class="fa fa-search fa-lg" aria-hidden="true"></i>
                         </a>

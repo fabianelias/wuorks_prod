@@ -142,8 +142,9 @@ function createMarkers(){
 
                         google.maps.event.addListener(gMarkerWs, "click", function(){
                             perfilUsuario(result);
+                           // $("#cont"+result.wuorks_key).addClass("page-scroll");
                             window.location.href = '#cont'+result.wuorks_key;
-                            $("#cont"+result.wuorks_key).hover();
+                            
                         });
                         
                         
