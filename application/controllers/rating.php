@@ -85,7 +85,8 @@ Class Rating extends CI_Controller{
                 "name_user"   => $this->session->userdata("username"),
                 "id_profession" => $id_profession,
                 "id_company"    => $id_company,
-                "id_contract"   => $key_contract
+                "id_contract"   => $key_contract,
+                "id_user"       => $this->session->userdata("wuorks_key")
              );
             
             $ch = curl_init($this->api_url."contracts/rating/key/".$this->key_wuorks);

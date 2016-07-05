@@ -40,7 +40,7 @@ Class Wuokers extends CI_Controller{
         }else{
             $key_profession = $keyPro;
         }
-        
+       
         $this->curl->create($this->api_url."profession/infoProfession/wuorks_key/".$wuork_key."/key_profession/".$key_profession."/key/".$this->key_wuorks);
        
        // $data["infoUser"] = json_decode($this->curl->execute(),true);
@@ -92,7 +92,7 @@ Class Wuokers extends CI_Controller{
             }else{
                 $key_profession = $keyPro;
             }
-            
+          
             $this->curl->create($this->api_url."company/company_info/wuorks_key/".$wuork_key."/key_company/".$key_profession."/key/".$this->key_wuorks);
         
             $results = json_decode($this->curl->execute(),true);

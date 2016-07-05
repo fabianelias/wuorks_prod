@@ -44,7 +44,7 @@ Class Email_template{
                                         <table style='width: 100%'>
                                                 <tr style='background-color:#fff;    box-shadow: 0 1px 1px rgba(0,0,0,.1);'>
                                                     <td style='padding:20px;'>
-                                                        <img src='http://www.wuorks.com/asset/images-wuorks/logo-cl.png'>
+                                                        <img src='https://www.wuorks.cl/asset/img/logo-cl.png'>
                                                     </td>
                                                 </tr>
                                                 <tr>
