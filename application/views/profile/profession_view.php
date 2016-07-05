@@ -82,6 +82,7 @@ if($this->session->flashdata('mensajes')){
                                                 Lugar de trabajo:  <?php echo $workplace; ?> &nbsp; | &nbsp;
                                                 Calificación: 
                                                 <?php 
+                                                //print_r($row["rating"]);
                                                 if(empty($row["rating"])){
                                                     echo " Sin calificación.";
                                                 }else{
@@ -93,7 +94,14 @@ if($this->session->flashdata('mensajes')){
                                                     }
                                                     $calificacion = $nota / $j;
                                                     
-                                                    echo $calificacion." (de ".$j." Calificaciones)";
+                                                    for ($v = 1; $v < 6; $v++) {
+                                                        if ($v <= $calificacion) {
+                                                           echo  '<i class="fa fa-lg fa-star" style="color: #FFA000;"></i> ';
+                                                        } else {
+                                                           echo '<i class="fa fa-lg fa-star-o" style="color:  #CCD1D9;"></i> ';
+                                                        }
+                                                    }
+                                                    echo $calificacion." &nbsp;<small>(de ".$j." Calificaciones)</small>";
                                                 }
                                                 ?>
                                             </p>
