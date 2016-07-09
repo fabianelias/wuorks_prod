@@ -91,6 +91,13 @@ Class Oauth extends CI_Controller{
             
             $info = json_decode($result,true);
             if($info['res'] == 3){
+                
+                //Vemos si es primera ves que se logea
+                if($info['data'][0]["tuto"] == 0){
+                    $this->session->set_userdata($info['data'][0]);
+                    redirect(base_url("hello"),"refresh");
+                }
+                
                 //por si existe una url de destino
                 if($this->input->post('url_destino')){
                     
@@ -457,8 +464,14 @@ Class Oauth extends CI_Controller{
                     $info = json_decode($result,true);
                     //crear array para variables de session
                     
-                    $this->session->set_userdata($info['data'][0]);
-                    redirect(base_url()."profile/?uri=facebook","refresh");
+                    //Vemos si es primera ves que se logea
+                    if($info['data'][0]["tuto"] == 0){
+                        $this->session->set_userdata($info['data'][0]);
+                        redirect(base_url("hello"),"refresh");
+                    }else{
+                        $this->session->set_userdata($info['data'][0]);
+                        redirect(base_url()."profile/?uri=facebook","refresh");
+                    }
                     
                 }else{
                     $this->session->set_flashdata("error_2", "Error de facebook");
@@ -486,9 +499,14 @@ Class Oauth extends CI_Controller{
                 curl_close($ch);
                 $info = json_decode($result,true);
                 
-                $this->session->set_userdata($info['data'][0]);
-                redirect(base_url(), 'refresh');
-                
+                //Vemos si es primera ves que se logea
+                if($info['data'][0]["tuto"] == 0){
+                    $this->session->set_userdata($info['data'][0]);
+                    redirect(base_url("hello"),"refresh");
+                }else{
+                    $this->session->set_userdata($info['data'][0]);
+                    redirect(base_url(), 'refresh');
+                }
             }
         }else{
             $this->session->set_flashdata("error_2", "Error de facebook");
