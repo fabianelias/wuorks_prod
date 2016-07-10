@@ -1,4 +1,5 @@
 <section class="" style="background-color:#fff;">
+    <script src="<?php echo base_url("asset/js/regiones.js");?>"></script>
     <div class="container">
         <div class="row" style="height: 450px;margin-top:80px;background-color: #fff;/*background: url('./asset/img/banner-portada.png') center;*/">
             
@@ -11,34 +12,64 @@
                     </center>
                 </div>
                 <div class="col-lg-6 col-md-6 col-lg-offset-2  col-md -offset-2 text-center">
-                    <h2 class="title">Eso es todo <?php echo $this->session->userdata('username');?></h2>
-                    <hr>
                     <h3 class="sub-title text-center">
-                        ¡Estás listo para comenzar!
-                        
-                        <?php 
-                        if($this->session->userdata("user_type") == 1){
-                            //profesional
-                        ?>
-                        <a class="page-scroll" href="<?php echo base_url("hello/ready");?>" style="line-height:70px;">
-                            Crear mi primera profesión
-                            <i class="fa fa-arrow-right fa-lg"></i>
-                        </a>
-                        <?php 
-                        }else{
-                            //Empresa
-                        ?>
-                        <a class="page-scroll" href="<?php echo base_url("hello/ready");?>" style="line-height:70px;">
-                            Crear mi perfl como empresa
-                            <i class="fa fa-arrow-right fa-lg"></i>
-                        </a>
-                        <?php 
-                        }
-                        ?>
+                        Es necesario
+                        completar o verificar la siguiente información
                     </h3>
+                    <form action="<?php echo base_url("hello/step_4");?>" method="POST" name="form1"id="form1">
+                        <?php
+                        $i = $infoUser["data"][0];
+                        ?>
+                        <div class="form-group col-md-12">
+                            <input type="text" name="address" id="address" class="form-control" value="<?php echo $i["address"]; ?>" placeholder="Tu dirección ej: calle dos 2965" required="required">
+                            <div class="text-danger"><?php echo form_error('address');?></div>
+                            <small style="
+                                color: #31708f;
+                            ">
+                                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                Es importante el número de tu dirección para que tu ubicación sea correcta. Ejemplo: Calle 1234, Providencia, Chile.</small>
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                            <input type="hidden" name="url_base" id="url_base" value="<?php echo base_url();    ?>">
+                            <select name="region" id="region"  class="form-control" required="required">
+                                <option>Selecciona tu región</option>
+                                <?php
+                                foreach ($regiones as $reg){
+                                    if($reg["nombre"] == $infoUser["region_nom"]){
+                                        $region_selected = "selected";
+                                    }else{
+                                        $region_selected = "";
+                                    }
+                                    echo '<option value="'.$reg["id_region"].'" '.$region_selected.'>'.$reg["nombre"].'</option>';
+                                }
+
+                                ?>
+                            </select>
+                            <div class="text-danger"><?php echo form_error('regiob');?></div>
+                        </div>
+                        <div class="form-group col-md-6" id="comuna">
+                            <input type="text" name="commune_nom" id="commune_nom"  class="form-control" value="<?php echo $infoUser["comuna_nom"]; ?>" readonly="readonly">
+                            <input type="hidden" name="commune" id="commune"  class="form-control" value="<?php echo $i["commune"]; ?>">
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <input type="text" name="cell_phone_number" id="cell_phone_number" class="form-control" value="<?php if($i["cell_phone_number"] == 0){echo "";}else{ echo $i["cell_phone_number"];} ?>" placeholder="Telefono" required="required">
+                            <div class="text-danger"><?php echo form_error('cell_phone_number');?></div>
+                            <small style="
+                                color: #31708f;
+                            ">
+                                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                Tu telefono solo se compartira con la persona que te contrate</small>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <button type="submit" class="btn btn-block btn-sm btn-primary">
+                                Continuar
+                                <i class="fa fa-arrow-right fa-lg"></i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="col-lg-12 text-center" style="width:100%;color:#999;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="width:100%;color:#999;">
                 <i class="fa fa-circle-o"></i> &nbsp;
                 <i class="fa fa-circle-o"></i> &nbsp;
                 <i class="fa fa-circle"></i> &nbsp;
@@ -49,25 +80,7 @@
     
     <div class="text-center bg-primary" style="width: 100%; height: 70px;position:absolute; bottom: 0px;">
         <center>
-            <?php 
-            if($this->session->userdata("user_type") == 1){
-                //profesional
-            ?>
-            <a class="page-scroll titlea" href="<?php echo base_url("hello/ready");?>" style="line-height:70px;">
-                Crear mi primera profesión
-                <i class="fa fa-arrow-right fa-lg"></i>
-            </a>
-            <?php 
-            }else{
-                //Empresa
-            ?>
-            <a class="page-scroll titlea" href="<?php echo base_url("hello/ready");?>" style="line-height:70px;">
-                Crear mi perfil como empresa
-                <i class="fa fa-arrow-right fa-lg"></i>
-            </a>
-            <?php 
-            }
-            ?>
+            
         </center>
     </div>
 </section>

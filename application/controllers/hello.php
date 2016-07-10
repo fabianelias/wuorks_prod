@@ -75,9 +75,54 @@ Class Hello extends CI_Controller{
         $data["files"]  = $this->head_files->register();
         $data["titulo"] = "Wuorks el profesional que necesitas";
         
+        //Obtengo las regiones
+        $this->curl->create($this->api_url."regiones/obtRegiones/key/".$this->key_wuorks);
+        $data["regiones"] = json_decode($this->curl->execute(),true);
+        
+        //Obtengo la info del usuario
+        $this->curl->create($this->api_url."user/infoUser/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["infoUser"] = json_decode($this->curl->execute(),TRUE);
+        
         $this->load->view('includes/head',$data);
         $this->load->view('includes/nav_empty',$data);
         $this->load->view('hello/step_3_view',$data);
+        
+        
+    }
+    public function step_4(){
+        
+        $data["files"]  = $this->head_files->register();
+        $data["titulo"] = "Wuorks el profesional que necesitas";
+        
+        $address = $this->input->post("address");
+        $region  = $this->input->post("region");
+        $commune = $this->input->post("commune");
+        $telefono = $this->input->post("cell_phone_number");
+        
+        $data = array(
+            "address" => $address,
+            "region"  => $region,
+            "commune" => $commune,
+            "telefono" => $telefono,
+            "id_user" => $this->id_user
+        );
+        
+        $ch = curl_init($this->api_url."user/edit_user_tuto/key/".$this->key_wuorks);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($data));
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        $info = json_decode($result,true);
+        
+        //Obtengo la info del usuario
+        $this->curl->create($this->api_url."user/infoUser/id_user/".$this->id_user."/key/".$this->key_wuorks);
+        $data["infoUser"] = json_decode($this->curl->execute(),TRUE);
+        
+        $this->load->view('includes/head',$data);
+        $this->load->view('includes/nav_empty',$data);
+        $this->load->view('hello/step_4_view',$data);
         
         
     }
