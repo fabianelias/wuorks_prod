@@ -14,9 +14,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll img-responsive" href="<?php echo base_url(); ?>">
+                <a class="navbar-brand page-scroll img-responsive logo" href="<?php echo base_url(); ?>">
                     <!--<img src="<?php echo base_url(); ?>asset/img/logo-blanco.png" style="margin-top: -15px;height: 50px; opacity:.6;">-->
-                    <img class="small" alt="Wuorks" src="<?php echo base_url(); ?>asset/img/logo-cl.png" style="margin-top:-14px; width:160px; max-height:50px;">
+                    <img class="small hidden" alt="Wuorks" src="<?php echo base_url(); ?>asset/img/logo-op-1.png" style="margin-top:-11px; width:155px; max-height:43px;">
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -85,7 +85,7 @@
                             padding: 5 20px;
                             margin-top: 9px;
                             border: 1px solid #288feb;
-                            border-radius: 3px;
+                            border-radius: 50px;
                             font-weight: 300;
                            "
                            href="<?php echo base_url(); ?>oauth/register">Registrate</a>
