@@ -27,6 +27,11 @@
                         <i class="fa fa-check-circle"></i>
                         Si tienes una pequeña pyme crea tu perfil de empresa con información básica: 
                         rubro, dónde estás ubicado, una descripción de lo que haces, etc.
+                        <hr>
+                        <i class="fa fa-check-circle"></i>
+                        Las demás personas podrán buscar tus servicios en el mapa, solicitar tus servicios,
+                        calificar tu trabajo y más.
+                        <hr>
                         <br>
                     </h5>
                 </div>
@@ -34,6 +39,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="width:100%;color:#999;">
                 <i class="fa fa-circle-o"></i> &nbsp;
                 <i class="fa fa-circle"></i> &nbsp;
+                <i class="fa fa-circle-o"></i> &nbsp;
                 <i class="fa fa-circle-o"></i> &nbsp;
                 <br/>
             </div>

@@ -129,7 +129,7 @@ Class Hello extends CI_Controller{
     /***************************************************************************
      * @ready(): función final del tuto redirije a crear profesion o empresa.
      **************************************************************************/
-    public function ready(){
+    public function ready($where = null ){
         
         //1.- REALIZAMOS UNA LLAMADA AL API PARA CAMBIAR EL ESTADO
         // Y NO MOSTRAR MÁS EL TUTO
@@ -138,6 +138,12 @@ Class Hello extends CI_Controller{
         
         $this->session->set_userdata("tuto",1);
         
+        //Busca un wuokers
+        if($where == 2){
+            redirect(base_url()."search?utf8=✓&work_area=&work_region=13&btn-search=Buscar&token=52684b3357289d2e8b8087e2a59082f3","refresh");
+        }
+        
+        //Quiere crear un perfil
         if($this->session->userdata("user_type") == 1){
             //Profesión
             redirect(base_url()."profile/profession","refresh");

@@ -16,13 +16,16 @@
                             style="height:160px;width:160px; margin-top:9px;"
                             class="img-responsive img-circle">
                     </center>
-                    <h2 class="title">Hola <?php echo $this->session->userdata('username');?></h2>
+                    <h2 class="title">Hola <?php 
+                    $names = explode(" ", $this->session->userdata("name"));
+                    echo ucfirst($names[0]);?></h2>
                     <br>
                     <h3 class="sub-title">A continuación te daremos una breve explicación de como comenzar con Wuorks.</h3>
                 </div>
             </div>
             <div class="col-lg-12 text-center" style="width:100%;color:#999;">
                 <i class="fa fa-circle"></i> &nbsp;
+                <i class="fa fa-circle-o"></i> &nbsp;
                 <i class="fa fa-circle-o"></i> &nbsp;
                 <i class="fa fa-circle-o"></i> &nbsp;
                 <br/>

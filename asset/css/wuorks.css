@@ -11,5 +11,6 @@ and open the template in the editor.
     width: 200px;
     height: 48px;
     background: url(../img/logo-wuorks-full.jpg)no-repeat center;
-    background-size: 155px 45px;
+    background-size: 150px 45px;
+    margin-top: 2px;
 }

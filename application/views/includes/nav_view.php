@@ -85,7 +85,7 @@
                             padding: 5 20px;
                             margin-top: 9px;
                             border: 1px solid #288feb;
-                            border-radius: 3px;
+                            border-radius: 50px;
                             font-weight: 300;
                            "
                            href="<?php echo base_url(); ?>oauth/register">Registrate</a>

@@ -16,6 +16,13 @@
                         Es necesario
                         completar o verificar la siguiente información
                     </h3>
+                    <h5 class="sub-title text-center" style="font-size:13px;">
+                        <i class="fa fa-check-circle"></i>
+                        Para contratar o publicar tus servicios es importante que
+                        completes estos datos de tu perfil.<br>
+                        Estos datos nunca serán expuestos de manera pública.
+                        <hr>
+                    </h5>
                     <form action="<?php echo base_url("hello/step_4");?>" method="POST" name="form1"id="form1">
                         <?php
                         $i = $infoUser["data"][0];
@@ -73,6 +80,7 @@
                 <i class="fa fa-circle-o"></i> &nbsp;
                 <i class="fa fa-circle-o"></i> &nbsp;
                 <i class="fa fa-circle"></i> &nbsp;
+                <i class="fa fa-circle-o"></i> &nbsp;
                 <br/>
             </div>
         </div>
@@ -130,4 +138,12 @@
 </style>
 <script type="text/javascript">
     document.body.style.backgroundColor="#ffffff";
+    function valida_form(){
+        address = $("#address").val();
+        region  = $("#region").val();
+        comuna  = $("#comuna").val();
+        telefono = $("#cell_phone_number").val();
+        
+        
+    }
 </script>
