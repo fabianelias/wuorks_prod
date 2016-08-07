@@ -1,4 +1,4 @@
-/*******************************************************************************
+  /*******************************************************************************
  * 
  *        Funciones google Maps
  *        Copyright © 2016 wuorks.com Todos los Derechos Reservados.
@@ -243,17 +243,17 @@ function perfilUsuario(result){
     }
     
     $("#userInfo").html('<div class="thumbnail" style="padding: 0px; border:0px; max-width:300px;">'+
-                            '<img src="'+url_base+'asset/img/user_avatar/'+result.avatar+'" alt="..." style="margin: 0 auto;">'+
+                            '<img src="'+url_base+'asset/img/user_avatar/'+result.avatar+'" alt="Wuokers" style="margin: 0 auto;">'+
                             '<div class="caption text-center">'+
-                                '<h3 id="nameUser" style="font-weight:300;">'+result.username+'</h3>'+
+                                '<h3 id="nameUser" style="font-weight:300;">'+result.username+'<br/><small style="font-weight:300;">Profesión - '+result.profession+'<hr/></small></h3>'+
                              '<p>'+
                              '<form name="form-user" id="form-user" action="'+url_base+'wuokers/'+func+'/'+result.username+'/'+result.profession+'/'+result.key_profession+'?wk='+result.wuorks_key+'" method="POST" target="_blank">'+
                                 '<input type="hidden" name="wuorks_key" id="wuorks_key" value="'+result.wuorks_key+'">'+
                                 '<input type="hidden" name="key_profession" id="key_profession" value="'+result.key_profession+'">'+
-                                '<button type="submit" name="verPerfil" class="btn btn-primary btn-block">Ver perfil</button>'+
+                                '<button type="submit" name="verPerfil" style="width:47%;float:right;" class="btn btn-primary btn-block">Ver perfil</button>'+
                              '</form>'+
                                   '<br/>'+
-                                  '<a href="#" class="btn btn-default btn-block" data-dismiss="modal"  role="button">Cerrar</a>'+
+                                  '<a href="#" class="btn btn-default btn-block" data-dismiss="modal" style="width:47%;float:left;margin-top:-23px;" role="button">Cerrar</a>'+
                               '</p>'+
                            ' </div>'+
                         '</div>');
