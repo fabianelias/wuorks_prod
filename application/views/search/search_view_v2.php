@@ -1,7 +1,7 @@
 <div class="container">
     <div class="container-map row">
         <!-- Section results -->
-        <div class="col-md-6 col-sm-12 col-xs-12" id="box-results">
+        <div class="col-md-6 col-sm-6 col-xs-12" id="box-results">
             <input type="hidden" name="wuorks" id="wuorks" value="<?php echo $wuorks; ?>">
             <input type="hidden" name="region" id="region" value="<?php echo $region; ?>">
             <!--Section buscador -->
@@ -16,7 +16,11 @@
                         <select name="work_region" id="work_region" class="form-control form-search">
                             <?php
                             foreach ($regiones as $reg) {
-                                echo '<option value="' . $reg["id_region"] . '">' . $reg["nombre"] . '</option>';
+                                $selected = "";
+                                if($_GET['work_region'] == $reg["id_region"]){
+                                    $selected = "selected"; 
+                                }
+                                echo '<option value="' . $reg["id_region"] . '" '.$selected.'>' . $reg["nombre"] . '</option>';
                             }
                             ?>
                         </select>
@@ -73,7 +77,7 @@
             <!-- /fin section resultados-->
         </div>
         <!-- Section map -->
-        <div class="col-md-6 hidden-sm hidden-xs box-search" style="height:100%; background-color: #fbfbfb;">
+        <div class="col-lg-6 col-md-6 col-sm-6 hidden-xs box-search" style="height:100%; background-color: #fbfbfb;">
             <!-- alerta -->
             <div class="alert alert-warning alert-dismissible text-center hidden" id="alert-search" role="alert" style="margin-bottom: 0px;">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
