@@ -171,3 +171,5 @@
         });
     });
 </script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v3"></script>
