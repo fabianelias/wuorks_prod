@@ -34,7 +34,7 @@
     <meta property="og:description"   content="Encontrar a un profesional nunca fue tan fácil" />
     <meta property="og:image"         content="https://www.wuorks.cl/asset/images-wuorks/logo-cl.png" />
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v3"></script>
+    
    
     <?php
         foreach ($files['styles'] as $st){

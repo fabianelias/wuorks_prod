@@ -105,7 +105,7 @@ function createMarkers(){
                
                var objWuorkers = {
                        
-                        address : result.address +" "+ result.commune //+" "+ result.region 
+                        address : result.address //+" "+ result.commune //+" "+ result.region 
                                 
                    };
                    
@@ -115,12 +115,12 @@ function createMarkers(){
                    function fn_exito(data){
                        
                         var coor = data[0].geometry.location;
-
+                        
                         var configs = {
-                        map : map,
-                        position: coor,
-                        title : result.username
-                    };
+                            map : map,
+                            position:coor,
+                            title : result.username
+                        };
 
                         var gMarkerWs = new google.maps.Marker(configs);
                          gMarkerWs.setIcon(url_base+"asset/img/marker2.png");
@@ -253,7 +253,7 @@ function perfilUsuario(result){
                                 '<button type="submit" name="verPerfil" style="width:47%;float:right;" class="btn btn-primary btn-block">Ver perfil</button>'+
                              '</form>'+
                                   '<br/>'+
-                                  '<a href="#" class="btn btn-default btn-block" data-dismiss="modal" style="width:47%;float:left;margin-top:-23px;" role="button">Cerrar</a>'+
+                                  '<a href="#" class="btn btn-default btn-block" data-dismiss="modal" style="width:47%;float:left;margin-top:-20px;" role="button">Cerrar</a>'+
                               '</p>'+
                            ' </div>'+
                         '</div>');
