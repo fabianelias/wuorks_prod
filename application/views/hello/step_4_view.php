@@ -69,7 +69,7 @@
         </div>
     </div>
     
-    <div class="text-center bg-primary" style="width: 100%; height: 70px;position:absolute; bottom: 0px;">
+    <div class="hidden text-center bg-primary" style="width: 100%; height: 70px;position:absolute; bottom: 0px;">
         <center>
             <?php 
             if($this->session->userdata("user_type") == 1){

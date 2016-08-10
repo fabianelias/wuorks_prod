@@ -392,6 +392,7 @@ Class Profile extends CI_Controller{
         $this->form_validation->set_rules("last_name_p","Apellido paterno","trim|required");
         $this->form_validation->set_rules("last_name_m","Apellido materno","trim|required");
         $this->form_validation->set_rules("address","Dirección","trim|required");
+        $this->form_validation->set_rules("latLng","Dirección","required");
         $this->form_validation->set_rules("commune","Comuna","trim|required");
         $this->form_validation->set_rules("region","Región","trim|required");
         //$this->form_validation->set_rules("rut","Rut","trim|required|integer|min_length[8]|max_length[9]");
@@ -417,6 +418,7 @@ Class Profile extends CI_Controller{
             $gender            = $this->input->post("gender");
             $birth_date        = $this->input->post("birth_date");
             $rut               = $this->input->post("rut");
+            $coor              = $this->input->post("latLng");
             
             $data = array(
                 'name'              => $name,
@@ -430,9 +432,10 @@ Class Profile extends CI_Controller{
                 'gender'            => $gender,
                 'birth_date'        => $birth_date,
                 'id_user'           => $this->id_user,
-                "rut"               => $rut
+                "rut"               => $rut,
+                "coor"              => $coor
              );
-            
+            //echo "<pre>";print_r($data);exit();
             $ch = curl_init($this->api_url."user/edit_user/key/".$this->key_wuorks);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -441,6 +444,11 @@ Class Profile extends CI_Controller{
             curl_close($ch);
             
             if($result){
+                
+                if($this->session->userdata("notifi")){
+                    $this->session->set_userdata("notificaciones","");
+                    $this->session->set_userdata("notifi",false);
+                }
                 $this->session->set_flashdata("mensajes","Perfil editado con exito :)");
                 redirect(base_url()."profile");
             }else{
@@ -505,6 +513,7 @@ Class Profile extends CI_Controller{
             $company_category    = $this->input->post("company_category");
             $region              = $this->input->post("region");
             $commune             = $this->input->post("commune");
+            $coor              = $this->input->post("latLng");
             
             $company = array(
                 "company_name"        => $company_name,
@@ -513,7 +522,8 @@ Class Profile extends CI_Controller{
                 "company_category"    => $company_category,
                 "region"              => $region,
                 "commune"             => $commune,
-                "id_user"             => $this->id_user
+                "id_user"             => $this->id_user,
+                "coor"                => $coor
             );
             $ch = curl_init($this->api_url."company/edit_company/key/".$this->key_wuorks);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -560,6 +570,7 @@ Class Profile extends CI_Controller{
             $company_category    = $this->input->post("company_category");
             $region              = $this->input->post("region");
             $commune             = $this->input->post("commune");
+            $coor                = $this->input->post("latLng");
             
             $company = array(
                 "company_name"        => $company_name,
@@ -568,7 +579,8 @@ Class Profile extends CI_Controller{
                 "company_category"    => $company_category,
                 "region"              => $region,
                 "commune"             => $commune,
-                "id_user"             => $this->id_user
+                "id_user"             => $this->id_user,
+                "coor"                => $coor
             );
             $ch = curl_init($this->api_url."company/create_company/key/".$this->key_wuorks);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
