@@ -69,7 +69,7 @@
                                             ">
                                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                                                 Es importante el número de tu dirección para que tu ubicación sea correcta. Ejemplo: Calle 1234, Providencia, Chile.</small>
-                                            <input type="text" name="address" id="address" class="form-control" onchange="myCoor();" value="<?php echo $i["address"]; ?>" placeholder="Tu dirección ej: calle dos 2965">
+                                            <input type="text" name="address" id="address" class="form-control" aucomplete="off" onmouseenter="myCoor();"  value="<?php echo $i["address"]; ?>" placeholder="Tu dirección ej: calle dos 2965">
                                             <div class="text-danger"><?php echo form_error('address');?></div>
                                             <div class="hidden" id="map" style="height:300px; margin-top:5px;">
                                                 <center class="" id="loadTop">
@@ -181,9 +181,16 @@
     
     
 </style>
-<script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkoT7wvKlxwO7aCjUfeBidxUFV8GE_yas&signed_in=false&libraries=places&callback=initAutocomplete"
+        async defer></script>
+<script type="text/javascript">
 // This example displays an address form, using the autocomplete feature
 // of the Google Places API to help users fill in the information.
+$(document).ready(function(){
+   //
+    initAutocomplete();
+     
+});
 
 var placeSearch, autocomplete;
 var componentForm = {
@@ -197,13 +204,14 @@ var componentForm = {
 var divSearchMap = document.getElementById("map");
 
 function initAutocomplete() {
+     myCoor();
   // Create the autocomplete object, restricting the search to geographical
   // location types.
   autocomplete = new google.maps.places.Autocomplete(
       /** @type {!HTMLInputElement} */(document.getElementById('address')),
-      {types: ['geocode']});
-
- 
+      {types: ['geocode']},
+               myCoor()
+                );
 }
 
 function myCoor(){
@@ -215,9 +223,8 @@ function myCoor(){
         address : add
 
     };
-
     var gCoder = new google.maps.Geocoder();
-                   gCoder.geocode(objWuorkers, fn_exito);
+    gCoder.geocode(objWuorkers, fn_exito);
 
     function fn_exito(data){
 
@@ -268,5 +275,3 @@ function myCoor(){
 // [END region_geolocation]
 
     </script>
- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkoT7wvKlxwO7aCjUfeBidxUFV8GE_yas&signed_in=false&libraries=places&callback=initAutocomplete"
-        async defer></script>
