@@ -98,13 +98,15 @@ Class Hello extends CI_Controller{
         $region  = $this->input->post("region");
         $commune = $this->input->post("commune");
         $telefono = $this->input->post("cell_phone_number");
+        $coor     = $this->input->post("latLng");
         
         $data = array(
             "address" => $address,
             "region"  => $region,
             "commune" => $commune,
             "telefono" => $telefono,
-            "id_user" => $this->id_user
+            "id_user" => $this->id_user,
+            "coor"    => $coor
         );
         
         $ch = curl_init($this->api_url."user/edit_user_tuto/key/".$this->key_wuorks);

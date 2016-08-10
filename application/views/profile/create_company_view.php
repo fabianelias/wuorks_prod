@@ -50,8 +50,18 @@
                                             <div class="text-danger"><?php echo form_error('company_description');?></div>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <input type="text" name="address" id="address" class="form-control" value="<?php echo set_value('address'); ?>" placeholder="Tu dirección ej: calle dos 2965">
+                                            <input type="text" name="address" id="address" onchange="myCoor();"class="form-control" value="<?php echo $c["address"]; ?>" placeholder="Tu dirección ej: calle dos 2965">
                                             <div class="text-danger"><?php echo form_error('address');?></div>
+                                            <div class="hidden" id="map" style="height:300px; margin-top:5px;">
+                                                <center class="" id="loadTop">
+                                                    <br/>
+                                                    <br/>
+                                                    <i class="fa fa-spinner fa-pulse fa-2x" style="color:#3AA3E3;"></i>
+                                                    <br/>
+                                                    <br/>
+                                                </center>
+                                            </div>
+                                            <input type="hidden" name="latLng" id="latLng" value="">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <select name="region" id="region"  class="form-control">
@@ -114,3 +124,90 @@
     
 </style>
 
+<script>
+// This example displays an address form, using the autocomplete feature
+// of the Google Places API to help users fill in the information.
+
+var placeSearch, autocomplete;
+var componentForm = {
+  street_number: 'short_name',
+  route: 'long_name',
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  country: 'long_name',
+  postal_code: 'short_name'
+};
+var divSearchMap = document.getElementById("map");
+
+function initAutocomplete() {
+  // Create the autocomplete object, restricting the search to geographical
+  // location types.
+  autocomplete = new google.maps.places.Autocomplete(
+      /** @type {!HTMLInputElement} */(document.getElementById('address')),
+      {types: ['geocode']});
+
+ 
+}
+
+function myCoor(){
+    var add = $("#address").val();
+    
+    $("#map").removeClass("hidden");
+    var objWuorkers = {
+
+        address : add
+
+    };
+
+    var gCoder = new google.maps.Geocoder();
+                   gCoder.geocode(objWuorkers, fn_exito);
+
+    function fn_exito(data){
+
+        var coor = data[0].geometry.location;
+        // alert(coor);
+       
+        var myOptions = {
+          zoom: 16,
+          center: coor,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          disableDefaultUI: true,
+          zoomControl: true,
+            zoomControlOptions: {
+            position: google.maps.ControlPosition.RIGHT_TOP
+            },
+          scrollwheel: false
+        };
+
+        // Inicializador del mapa en el div asignado.
+        map = new google.maps.Map(document.getElementById("map"),myOptions); 
+
+        // Opciones de configuración de los marcadores.
+        var objMarker = {
+            position: coor,
+            map: map,
+            title: "Mi posición actual"
+        };
+
+         var population = 2;
+         var cityCircle = new google.maps.Circle({
+          strokeColor: '#2895F1',//'#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#2895F1',//'#FF0000',
+          fillOpacity: 0.35,
+          map: map,
+          center: coor,
+          radius: Math.sqrt(population) * 100
+        });
+    $("#latLng").val(coor);
+    //Declaración del marker principal.
+    
+    //var marker = new google.maps.Marker(circle);
+    }
+}
+
+
+    </script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkoT7wvKlxwO7aCjUfeBidxUFV8GE_yas&signed_in=false&libraries=places&callback=initAutocomplete"
+        async defer></script>

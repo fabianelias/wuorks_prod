@@ -33,8 +33,19 @@
                             ">
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                                 Es importante el número de tu dirección para que tu ubicación sea correcta. Ejemplo: Calle 1234, Providencia, Chile.</small>
-                            <input type="text" name="address" id="address" class="form-control" value="<?php echo $i["address"]; ?>" placeholder="Tu dirección ej: calle dos 2965" required="required">
+                           
+                            <input type="text" name="address" id="address" onchange="myCoor();"class="form-control" value="<?php echo $i["address"]; ?>" placeholder="Tu dirección ej: calle dos 2965">
                             <div class="text-danger"><?php echo form_error('address');?></div>
+                            <div class="hidden" id="map" style="height:300px; margin-top:5px;">
+                                <center class="" id="loadTop">
+                                    <br/>
+                                    <br/>
+                                    <i class="fa fa-spinner fa-pulse fa-2x" style="color:#3AA3E3;"></i>
+                                    <br/>
+                                    <br/>
+                                </center>
+                            </div>
+                            <input type="hidden" name="latLng" id="latLng" value="<?php echo "(".$i["lat"].", ".$i["lng"].")"; ?>">
                         </div>
                         <div class="form-group col-md-6 col-sm-6 col-xs-12">
                             <input type="hidden" name="url_base" id="url_base" value="<?php echo base_url();    ?>">
@@ -147,7 +158,6 @@
         
     }
 </script>
-
 <script>
 // This example displays an address form, using the autocomplete feature
 // of the Google Places API to help users fill in the information.
@@ -161,6 +171,7 @@ var componentForm = {
   country: 'long_name',
   postal_code: 'short_name'
 };
+var divSearchMap = document.getElementById("map");
 
 function initAutocomplete() {
   // Create the autocomplete object, restricting the search to geographical
@@ -169,52 +180,67 @@ function initAutocomplete() {
       /** @type {!HTMLInputElement} */(document.getElementById('address')),
       {types: ['geocode']});
 
-  // When the user selects an address from the dropdown, populate the address
-  // fields in the form.
-  autocomplete.addListener('place_changed', fillInAddress);
+ 
 }
 
-// [START region_fillform]
-function fillInAddress() {
-  // Get the place details from the autocomplete object.
-  var place = autocomplete.getPlace();
+function myCoor(){
+    var add = $("#address").val();
+    
+    $("#map").removeClass("hidden");
+    var objWuorkers = {
 
-  for (var component in componentForm) {
-    document.getElementById(component).value = '';
-    document.getElementById(component).disabled = false;
-  }
+        address : add
 
-  // Get each component of the address from the place details
-  // and fill the corresponding field on the form.
-  for (var i = 0; i < place.address_components.length; i++) {
-    var addressType = place.address_components[i].types[0];
-    if (componentForm[addressType]) {
-      var val = place.address_components[i][componentForm[addressType]];
-      document.getElementById(addressType).value = val;
+    };
+
+    var gCoder = new google.maps.Geocoder();
+                   gCoder.geocode(objWuorkers, fn_exito);
+
+    function fn_exito(data){
+
+        var coor = data[0].geometry.location;
+        // alert(coor);
+       
+        var myOptions = {
+          zoom: 16,
+          center: coor,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          disableDefaultUI: true,
+          zoomControl: true,
+            zoomControlOptions: {
+            position: google.maps.ControlPosition.RIGHT_TOP
+            },
+          scrollwheel: false
+        };
+
+        // Inicializador del mapa en el div asignado.
+        map = new google.maps.Map(document.getElementById("map"),myOptions); 
+
+        // Opciones de configuración de los marcadores.
+        var objMarker = {
+            position: coor,
+            map: map,
+            title: "Mi posición actual"
+        };
+
+         var population = 2;
+         var cityCircle = new google.maps.Circle({
+          strokeColor: '#2895F1',//'#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#2895F1',//'#FF0000',
+          fillOpacity: 0.35,
+          map: map,
+          center: coor,
+          radius: Math.sqrt(population) * 100
+        });
+    $("#latLng").val(coor);
+    //Declaración del marker principal.
+    
+    //var marker = new google.maps.Marker(circle);
     }
-  }
 }
-// [END region_fillform]
 
-// [START region_geolocation]
-// Bias the autocomplete object to the user's geographical location,
-// as supplied by the browser's 'navigator.geolocation' object.
-function geolocate() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var geolocation = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-      var circle = new google.maps.Circle({
-        center: geolocation,
-        radius: position.coords.accuracy
-      });
-      autocomplete.setBounds(circle.getBounds());
-    });
-  }
-}
-// [END region_geolocation]
 
     </script>
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkoT7wvKlxwO7aCjUfeBidxUFV8GE_yas&signed_in=false&libraries=places&callback=initAutocomplete"

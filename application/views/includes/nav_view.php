@@ -46,6 +46,31 @@
                         </a>
                     </li>
                     <li style="border-right: 1px solid #e7e7e7; height:50px;">
+                        <a class="page-scroll hidden-sm hidden-xs page-scroll" style="top:5px;" href="<?php echo base_url("notificaciones"); ?>"
+                        data-toggle="tooltip" data-placement="bottom" 
+                        title=" <?php
+                            if($this->session->userdata("notifi")){
+                                echo 'Tienes notificaciones';
+                            }else{
+                                echo "No hay notificaciones";
+                            }
+                            ?>">
+                            <?php
+                            if($this->session->userdata("notifi")){
+                            ?>
+                            <i class="fa fa-bell fa-lg " aria-hidden="true"></i>
+                            <?php
+                            }else{
+                                echo '<i class="fa fa-bell-o fa-lg " aria-hidden="true"></i>';
+                            }
+                            ?>
+                        </a>
+                        <a class="hidden-md hidden-lg page-scroll text-center username" href="<?php echo base_url("notificaciones"); ?>">
+                           Notificaciones
+                           <i class="fa fa-bell-o fa-lg" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li style="border-right: 1px solid #e7e7e7; height:50px;">
                         <a class="page-scroll hidden-sm hidden-xs page-scroll" style="top:5px;" href="<?php echo base_url(); ?>?buscar=Wuokers"
                         data-toggle="tooltip" data-placement="bottom" title="Buscar Wuokers">
                             <i class="fa fa-search fa-lg " aria-hidden="true"></i>

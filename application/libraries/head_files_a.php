@@ -26,7 +26,7 @@ Class Head_files{
     public function search(){
         
         $files["scripts"] = array(
-            '0' => 'asset/js/search-wuorks.js' ,//'asset/js/5dab7af43bcc2ce63fcde7eada14a.min.js',
+            '0' => 'asset/js/5dab7af43bcc2ce63fcde7eada14a.min.js',
             '1' => 'asset/js/creative.js'
             //'2' => 'asset/js/search-wuorks.js'       
         );

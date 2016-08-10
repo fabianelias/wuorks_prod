@@ -109,6 +109,24 @@ Class Oauth extends CI_Controller{
                     
                     //crear array para variables de session
                     $this->session->set_userdata($info['data'][0]);
+                    
+                    if($info['data'][0]['lat'] == "" || $info['data'][0]['lng'] == ""){
+                        //echo "Notificación de confirmar direccion";exit();
+                        $mensaje_direccion = "Hola <b>".$info['data'][0]['username']."</b>, debido ha nuevas mejoras realizadas para que la experiencia en "
+                                . "Wuorks.cl sea mejor necesitamos que confirmes o cambies tu dirección.<br>"
+                                . "Recuerda que tu dirección nunca será mostrada publicamente.<br>Gracias equipo Wuorks.";
+                        $url_direccion = base_url("profile/editProfile?notificacion=actualiza-tu-direccion");
+                        $text_btn = "Ver mi dirección";
+                        $title = "Actualización Wuorks";
+                        $notificaciones[] = array("mensaje" => $mensaje_direccion,
+                                                  "url_de"  => $url_direccion,
+                                                  "txt_btn" => $text_btn,
+                                                  "title"   => $title);
+                        
+                        $this->session->set_userdata("notifi",true);
+                        $this->session->set_userdata("notificaciones",$notificaciones);
+                    }
+                    
                     redirect(base_url(), 'refresh');
                     
                     
