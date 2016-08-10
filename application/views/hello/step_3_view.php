@@ -34,7 +34,7 @@
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                                 Es importante el número de tu dirección para que tu ubicación sea correcta. Ejemplo: Calle 1234, Providencia, Chile.</small>
                            
-                            <input type="text" name="address" id="address" onchange="myCoor();"class="form-control" value="<?php echo $i["address"]; ?>" placeholder="Tu dirección ej: calle dos 2965">
+                            <input type="text" name="address" id="address"aucomplete="off" onmouseenter="myCoor();" class="form-control" value="<?php echo $i["address"]; ?>" placeholder="Tu dirección ej: calle dos 2965">
                             <div class="text-danger"><?php echo form_error('address');?></div>
                             <div class="hidden" id="map" style="height:300px; margin-top:5px;">
                                 <center class="" id="loadTop">
@@ -158,10 +158,17 @@
         
     }
 </script>
-<script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkoT7wvKlxwO7aCjUfeBidxUFV8GE_yas&signed_in=false&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+<script type="text/javascript">
 // This example displays an address form, using the autocomplete feature
 // of the Google Places API to help users fill in the information.
-
+$(document).ready(function(){
+   //
+    initAutocomplete();
+     
+});
 var placeSearch, autocomplete;
 var componentForm = {
   street_number: 'short_name',
@@ -176,15 +183,22 @@ var divSearchMap = document.getElementById("map");
 function initAutocomplete() {
   // Create the autocomplete object, restricting the search to geographical
   // location types.
+  myCoor();
   autocomplete = new google.maps.places.Autocomplete(
       /** @type {!HTMLInputElement} */(document.getElementById('address')),
-      {types: ['geocode']});
+      {types: ['geocode']},
+      myCoor()
+        );
 
  
 }
 
 function myCoor(){
     var add = $("#address").val();
+    
+    if(add ==""){
+        add = "tobalaba";//
+    }
     
     $("#map").removeClass("hidden");
     var objWuorkers = {
@@ -243,5 +257,3 @@ function myCoor(){
 
 
     </script>
- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkoT7wvKlxwO7aCjUfeBidxUFV8GE_yas&signed_in=false&libraries=places&callback=initAutocomplete"
-        async defer></script>
