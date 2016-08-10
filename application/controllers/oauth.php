@@ -517,6 +517,23 @@ Class Oauth extends CI_Controller{
                 curl_close($ch);
                 $info = json_decode($result,true);
                 
+                if($info['data'][0]['lat'] == "" || $info['data'][0]['lng'] == ""){
+                        //echo "Notificación de confirmar direccion";exit();
+                        $mensaje_direccion = "Hola <b>".$info['data'][0]['username']."</b>, debido ha nuevas mejoras realizadas para que la experiencia en "
+                                . "Wuorks.cl sea mejor necesitamos que confirmes o cambies tus direcciónes.<br>"
+                                . "Recuerda que tu dirección nunca será mostrada publicamente.<br>Gracias equipo Wuorks.";
+                        $url_direccion = base_url("profile/editProfile?notificacion=actualiza-tu-direccion");
+                        $text_btn = "Ver mi dirección";
+                        $title = "Actualización Wuorks";
+                        $notificaciones[] = array("mensaje" => $mensaje_direccion,
+                                                  "url_de"  => $url_direccion,
+                                                  "txt_btn" => $text_btn,
+                                                  "title"   => $title);
+                        
+                        $this->session->set_userdata("notifi",true);
+                        $this->session->set_userdata("notificaciones",$notificaciones);
+                }
+                    
                 //Vemos si es primera ves que se logea
                 if($info['data'][0]["tuto"] == 0){
                     $this->session->set_userdata($info['data'][0]);
