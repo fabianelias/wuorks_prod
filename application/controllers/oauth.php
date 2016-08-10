@@ -113,7 +113,7 @@ Class Oauth extends CI_Controller{
                     if($info['data'][0]['lat'] == "" || $info['data'][0]['lng'] == ""){
                         //echo "Notificación de confirmar direccion";exit();
                         $mensaje_direccion = "Hola <b>".$info['data'][0]['username']."</b>, debido ha nuevas mejoras realizadas para que la experiencia en "
-                                . "Wuorks.cl sea mejor necesitamos que confirmes o cambies tu dirección.<br>"
+                                . "Wuorks.cl sea mejor necesitamos que confirmes o cambies tus direcciónes.<br>"
                                 . "Recuerda que tu dirección nunca será mostrada publicamente.<br>Gracias equipo Wuorks.";
                         $url_direccion = base_url("profile/editProfile?notificacion=actualiza-tu-direccion");
                         $text_btn = "Ver mi dirección";
