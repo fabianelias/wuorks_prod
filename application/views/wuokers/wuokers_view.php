@@ -18,7 +18,7 @@
 <header class="bg-info" id="map"style="height:260px; width: 100%;"></header>
 <div class="profile-Descktop">
     <div class="row">
-        <div class="col-lg-offset-1 col-md-offset-1 col-lg-4 col-md-4 col-sm-8 profile-Descktop-dos" style="border-radius: 2px;">
+        <div class="col-lg-offset-1 col-md-offset-1 col-lg-4 col-md-4 col-sm-8 profile-Descktop-dos" style="border-radius: 3px;    box-shadow: 0 2px 5px 0 rgba(0,0,0,.1),0 2px 5px 0 transparent;">
             <div class="col-lg-5 col-md-5 col-sm-5" style="margin-left: -40px; vertical-align: middle;">
                 <img class="img-circle img-responsive" 
                      src="<?php echo base_url(); ?>asset/img/user_avatar/<?php echo $infoUser[0]['avatar']; ?>" 
