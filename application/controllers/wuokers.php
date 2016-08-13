@@ -53,8 +53,8 @@ Class Wuokers extends CI_Controller{
 
             $this->load->view("includes/head",$data);
             $this->load->view("includes/nav_view");
-            //$this->load->view("wuokers/wuokers_view",$data);
-            $this->load->view("wuokers/wuokers_new_view",$data);
+            $this->load->view("wuokers/wuokers_view",$data);
+           // $this->load->view("wuokers/wuokers_new_view",$data);
             $this->load->view("includes/footer");
         }else{
             

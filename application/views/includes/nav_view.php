@@ -58,7 +58,7 @@
                             <?php
                             if($this->session->userdata("notifi")){
                             ?>
-                            <i class="fa fa-bell fa-lg " aria-hidden="true"></i>
+                            <i class="fa fa-bell fa-lg " style="color:#F57C00;"aria-hidden="true"></i>
                             <?php
                             }else{
                                 echo '<i class="fa fa-bell-o fa-lg " aria-hidden="true"></i>';
