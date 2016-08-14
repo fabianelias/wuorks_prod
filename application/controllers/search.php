@@ -38,17 +38,17 @@ Class Search extends CI_Controller{
         $wuorks = $this->input->get("work_area");
         $wuorks = trim($wuorks);
         $wuorks = strtolower($wuorks);
-        
+        $wuorks = $this->security->xss_clean($wuorks);
         $region = $this->input->get("work_region");
         $region = trim($region);
         $region = strtolower($region);
-        
+        $region = $this->security->xss_clean($region);
         $data["wuorks"] = $wuorks;
         $data["region"] = $region;
         
         //Prepar llamada al api
         
-       // $this->curl->create($this->api_url."search/search_wuorkers/wuork_area/".$wuorks."/region/".$region."/key/".$this->key_wuorks);
+        //$this->curl->create($this->api_url."search/search_wuorkers/wuork_area/".$wuorks."/region/".$region."/key/".$this->key_wuorks);
        //$results = $this->curl->execute();
         //echo $this->api_url."search/search_wuorkers/wuork_area/".$wuorks."/region/".$region."/key/".$this->key_wuorks;exit();
         //$data["results"] = $results;

@@ -16,7 +16,7 @@
                 </button>
                 <a class="navbar-brand page-scroll img-responsive logo" href="<?php echo base_url(); ?>">
                     <!--<img src="<?php echo base_url(); ?>asset/img/logo-blanco.png" style="margin-top: -15px;height: 50px; opacity:.6;">-->
-                    <img class="small hidden" alt="Wuorks" src="<?php echo base_url(); ?>asset/img/logo-op-1.png" style="margin-top:-11px; width:155px; max-height:43px;">
+                    <img class="small hidden" alt="Wuorks" src="<?php echo base_url(); ?>asset/img/logo-wuorks-full.jpg" style="margin-top:-11px; width:155px; max-height:43px;">
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

@@ -15,19 +15,29 @@
 ?>
 <section>
 <!-- Cabecera para Descktop -->
-<header class="bg-info" id="map"style="height:260px; width: 100%;"></header>
+<header class="bg-primary" id="map"style="height:260px; width: 100%;"></header>
 <div class="profile-Descktop">
     <div class="row">
-        <div class="col-lg-offset-1 col-md-offset-1 col-lg-4 col-md-4 col-sm-8 profile-Descktop-dos" style="border-radius: 3px;    box-shadow: 0 2px 5px 0 rgba(0,0,0,.1),0 2px 5px 0 transparent;">
+        <div class="col-lg-offset-1 col-md-offset-1 col-lg-4 col-md-4 col-sm-8 profile-Descktop-dos" style="border-radius: 3px;     padding: 20px;   box-shadow: 0 2px 5px 0 rgba(0,0,0,.1),0 2px 5px 0 transparent;">
             <div class="col-lg-5 col-md-5 col-sm-5" style="margin-left: -40px; vertical-align: middle;">
                 <img class="img-circle img-responsive" 
                      src="<?php echo base_url(); ?>asset/img/user_avatar/<?php echo $infoUser[0]['avatar']; ?>" 
                      alt="<?php echo $infoUser[0]["username"]; ?>" 
                      style="margin: 0 auto; height: 100px; width: 100px;">
                 
-                <small><a href="#descrip" class="page-scroll">Perfil</a></small>
+                <small><a href="#descrip" class="page-scroll">Profesional</a></small>
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-8 text-justify">
+            <style>
+                .box-user-2{
+                        text-align: justify;
+                 }
+                @media (max-width: 768px) {
+                    .box-user-2{
+                        text-align: center;
+                    }
+                }
+            </style>
+            <div class="col-lg-8 col-md-8 col-sm-10 box-user-2">
                 <h3 class="sub-title"><?php echo $infoUser[0]["username"]; ?><br/>
                     <small class="textos">Profesión: <?php echo $infoUser[0]["name_profession"]; ?></small> 
                 </h3>
@@ -52,7 +62,15 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
             <h4 class="sub-title">&nbsp;</h4>
         </div>
-        <div class="col-lg-8 col-md-8 col-sm-10 hidden-lg hidden-md col-xs-12 thumbnail" style="border-radius:2px;border:1px solid #e7e7e7;">
+        <div class="col-lg-8 col-md-8 col-sm-12 hidden-lg hidden-md col-xs-12 thumbnail" style="border-radius:2px;border:1px solid #e7e7e7;">
+            <center>
+                <br/>
+                <a  target="_blank" class=""
+                    href="http://www.facebook.com/sharer.php?u=<?php echo current_url()."?wk=".$infoUser[0]["wuorks_key"];?>&t=Wuorks Chile > <?php echo $infoUser[0]["username"]." - Profesión ".$infoUser[0]["name_profession"]; ?>">
+                    <i class="fa fa-facebook-official fa-lg"></i>
+                </a>
+                <p class="textos">Compártelo</p>
+            </center>
             <?php
                 if($this->session->userdata("username") == $infoUser[0]["username"]){
                 ?>
@@ -66,7 +84,7 @@
             
             ?>
         </div>
-        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 thumbnail" style="border-radius:2px;border:1px solid #fbfbfb;box-shadow: 0 2px 5px 0 rgba(0,0,0,.1),0 2px 5px 0 transparent;">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 thumbnail" style="border-radius:2px;border:1px solid #fbfbfb;box-shadow: 0 2px 5px 0 rgba(0,0,0,.1),0 2px 5px 0 transparent;">
             <div id="descrip" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-justify" style="/*border-bottom:1px solid #e7e7e7;*/">
                 <h4 class="titles">Mi trabajo</h4>
             </div>
@@ -78,10 +96,21 @@
                 </p>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-10 col-xs-12 pull-right hidden-sm hidden-xs thumbnail" style="border-radius:2px;border:1px solid #fbfbfb;box-shadow: 0 2px 5px 0 rgba(0,0,0,.1),0 2px 5px 0 transparent;">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 pull-right hidden-sm hidden-xs thumbnail" style="border-radius:2px;border:1px solid #fbfbfb;box-shadow: 0 2px 5px 0 rgba(0,0,0,.1),0 2px 5px 0 transparent;">
+            <center>
+                <br/>
+                <a  target="_blank" class=""
+                    href="http://www.facebook.com/sharer.php?u=<?php echo current_url()."?wk=".$infoUser[0]["wuorks_key"];?>&t=Wuorks Chile > <?php echo $infoUser[0]["username"]." - Profesión ".$infoUser[0]["name_profession"]; ?>">
+                    <i class="fa fa-facebook-official fa-lg"></i>
+                </a>
+                <p class="textos">Compártelo</p>
+            </center>
+        
             <?php 
+            $calificacion = 0;
+            $j    = 0;
             if(!empty($infoUser[0]["rating"])){
-                $j    = 0;
+               
                 $nota = 0;
                 foreach ($infoUser[0]["rating"] as $ranting){
                     $nota += $ranting["user_rating"];
@@ -125,7 +154,7 @@
         <br/>
         <hr/>
         <br/>
-        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 thumbnail" 
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 thumbnail" 
              style="border-radius:2px;
              border:1px solid #fbfbfb;/*#e7e7e7;*/
              box-shadow: 0 2px 5px 0 rgba(0,0,0,.1),0 2px 5px 0 transparent;;
@@ -182,7 +211,7 @@
                         <?php 
                         if(!$this->session->userdata('id_user')){
                         ?>
-                        <a class="btn btn-default">Ingresa para contratar a <?php echo  $infoUser[0]["username"];?></a>
+                        <a class="page-scroll btn btn-wuorks" href="#" data-toggle="modal" data-target="#login" style="font-weight: 300;">Ingresa para contratar a <?php echo  $infoUser[0]["username"];?></a>
                         <?php
                         }else{
                         ?>
@@ -278,7 +307,7 @@
     }
     .profile-Descktop{
         position: absolute;
-        top: 11rem;
+        top: 10rem;
         left: 2rem;
         right: 2rem;
         pointer-events: none;
@@ -290,7 +319,7 @@
         text-align: center;
     }
     /* Small devices (tablets, 768px and up) */
-    @media (max-width: 768px) {
+    @media (max-width: 868px) {
         .profile-Descktop{
             position: absolute;
             top: 4rem;

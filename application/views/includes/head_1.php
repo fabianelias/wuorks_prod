@@ -9,9 +9,7 @@
     <meta name="description" content="Empleos, profesionales, trabajos, servicios, freelancer">
     <meta name="author" content="">
     <link rel="icon" type="image/png" href="<?php echo base_url();?>asset/img/icon-60-60px.png">
-    <meta property="og:title" content="Wuorks | El profesional que necesitas" />
-    <meta property="og:description" content="Servicios, profesionales, empresas, trabajos y más..." />
-    <meta property="og:image" content="<?php echo base_url();?>asset/img/logo-cl.png" />
+    
 
     <title> <?php echo $titulo; ?> </title>
 
@@ -30,12 +28,11 @@
     <!--fb-plugin-->
     <meta property="og:url"           content="https://www.wuorks.cl" />
     <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="<?php echo $titulo; ?>" />
-    <meta property="og:description"   content="Encontrar a un profesional nunca fue tan fácil" />
-    <meta property="og:image"         content="https://www.wuorks.cl/asset/images-wuorks/logo-cl.png" />
+    <meta property="og:title"         content="<?php echo $titulos; ?>" />
+    <meta property="og:description"   content="<?php echo $desc;?>" />
+    <meta property="og:image"         content="<?php echo $avatar?>" />
 
-    
-   
+
     <?php
         foreach ($files['styles'] as $st){
             echo "<link href='".base_url().$st."' rel='stylesheet'>\n";
@@ -47,28 +44,10 @@
                 echo "<script src='".base_url().$sc."' type='text/javascript'></script>\n";
             }
         ?>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://harvesthq.github.io/chosen/chosen.jquery.js"></script>
     <script>
-          $(function() {
-            $('.chosen-select').chosen();
-            $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
-            
-          });
-          $(function() {
-            $("#region").change(function() {
-                $("#region option:selected").each(function() {
-
-                    txtRegion = $('#region').val();
-                    var url_base = $('#url_base').val();
-                    $.post(url_base+"profile/getComunas", {
-                        idregion : txtRegion
-                    }, function(data) {
-                        $("#comuna").html(data);
-                   });
-                });
-            });
-        });
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();
         });

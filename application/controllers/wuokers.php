@@ -18,7 +18,7 @@ Class Wuokers extends CI_Controller{
         $this->key_wuorks = "WBqyGRGuRHHTEIZwTuJfFvPgyhCHZ67GCmtlAxdT";
         $this->api_url    = $this->config->item("api_wuorks");
         
-        error_reporting(0);
+        //error_reporting(0);
         
     }
     
@@ -42,16 +42,20 @@ Class Wuokers extends CI_Controller{
         }
        
         $this->curl->create($this->api_url."profession/infoProfession/wuorks_key/".$wuork_key."/key_profession/".$key_profession."/key/".$this->key_wuorks);
-       
-       // $data["infoUser"] = json_decode($this->curl->execute(),true);
         $result = json_decode($this->curl->execute(),true);
+       
         if($result){
+            
             $data["titulo"] = "Wuorks el profesional que necesitas";
+            $data["titulos"] = $result[0]["username"];
+            $data["desc"] = $result[0]["job_description"];
+            $data["avatar"] = base_url()."asset/img/user_avatar/".$result[0]["avatar"]."";
+            
             $data["files"] = $this->head_files->wuokers();
 
             $data["infoUser"] = $result;
 
-            $this->load->view("includes/head",$data);
+            $this->load->view("includes/head_1",$data);
             $this->load->view("includes/nav_view");
             $this->load->view("wuokers/wuokers_view",$data);
            // $this->load->view("wuokers/wuokers_new_view",$data);
@@ -59,6 +63,7 @@ Class Wuokers extends CI_Controller{
         }else{
             
             $data["titulo"] = "Página no encontrada, Wuorks.com";
+            $data["files"] = $this->head_files->wuokers();
             //Carga regiones
             $this->curl->create($this->api_url."regiones/obtRegiones/key/".$this->key_wuorks);
             $data["regiones"] = json_decode($this->curl->execute(),true);
@@ -77,8 +82,6 @@ Class Wuokers extends CI_Controller{
     
     public function c($nameUser = '', $namePro = '', $keyPro = ''){
         
-       
-            
             $wuork_key      = "";
             $key_profession = "";
 
@@ -100,22 +103,29 @@ Class Wuokers extends CI_Controller{
             if($results){
                 
                 $data["titulo"] = "Wuorks el profesional que necesitas";
+                $data["titulos"] = $results[0]["company_name"]." - ".$results[0]["company_category"];
+                $data["desc"] = $results[0]["company_description"];
+                $data["avatar"] = base_url()."asset/img/user_avatar/".$results[0]["avatar"]."";
+            
                 $data["files"] = $this->head_files->wuokers();
 
                 $data["infoUser"] = $results;
 
-                $this->load->view("includes/head",$data);
+                $this->load->view("includes/head_1",$data);
                 $this->load->view("includes/nav_view");
                 $this->load->view("wuokers/wuokers_company_view",$data);
                 $this->load->view("includes/footer");
+                
             }else{
                 
                 $data["titulo"] = "Página no encontrada, Wuorks.com";
+                $data["files"] = $this->head_files->wuokers();
                 //Carga regiones
                 $this->curl->create($this->api_url."regiones/obtRegiones/key/".$this->key_wuorks);
                 $data["regiones"] = json_decode($this->curl->execute(),true);
                 
                 $this->load->view("includes/head",$data);
+                //$this->load->view("includes/nav_empty");
                 $this->load->view('errors/error_404_wuorks_view');
                 $this->load->view("includes/footer");
                 
@@ -265,4 +275,5 @@ Class Wuokers extends CI_Controller{
         }
         
     }
+    
 }

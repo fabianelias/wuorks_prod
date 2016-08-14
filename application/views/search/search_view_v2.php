@@ -10,7 +10,7 @@
                 <form name="form-search" id="form-search"  action="<?php echo base_url(); ?>search"  method="GET">
                     <div class="form-group col-lg-6 col-md-6">
                         <input type="hidden"  name="utf8" id="utf8" value="✓">
-                        <input name="work_area" id="work_area" class="form-control form-search" value="<?php echo $_GET['work_area']; ?>" placeholder="¿Qué profesional necesitas?">
+                        <input name="work_area" id="work_area" class="form-control form-search" value="<?php echo $wuorks; ?>" placeholder="¿Qué profesional necesitas?">
                     </div>
                     <div class="form-group col-lg-6 col-md-6">
                         <select name="work_region" id="work_region" class="form-control form-search">
@@ -59,14 +59,19 @@
                             <br/>
                             <br/>
                         </center>
-                         <center class="hidden" id="sinResultados">
+                         <center class="hidden textos" id="sinResultados" style="color:#999;">
                             <br/>
                             <br/>
-                            Sin resultados
+                            <i class="fa fa-info-circle fa-4x fa-lg"></i>
                             <br/>
+                            <br/>
+                            No hemos encontrado Wuokers
+                            que se ajusten a tu busqueda<br/>
+                            intentalo nuevamente.
+                            <hr/>
                             <br/>
                         </center>
-                        <div id="topWuokers">
+                         <div id="topWuokers" style="">
 
                         </div>
                         
@@ -79,9 +84,9 @@
         <!-- Section map -->
         <div class="col-lg-6 col-md-6 col-sm-6 hidden-xs box-search" style="height:100%; background-color: #fbfbfb;">
             <!-- alerta -->
-            <div class="alert alert-warning alert-dismissible text-center hidden" id="alert-search" role="alert" style="margin-bottom: 0px;">
+            <div class="alert alert-warning alert-dismissible text-center hidden" id="alert-search" role="alert" style="margin-bottom: 0px; border-radius: 0px; background-color: #FFC107; color: #FFECB3">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <strong>Opps!</strong> No se encontraron resultados, prueba otra vez.
+              <strong>Opps!</strong> Sin resultados
             </div>
             <div id="map-search" style="height:100%;">
                 <center>
@@ -133,6 +138,10 @@
     }
     .topHover:hover{
         background: #F3F3F3;
+    }
+    .textos{
+        font-weight: 300;
+        line-height: 30px;
     }
 </style>
 <div class="modal fade bs-example-modal-sm" id="perfilUser" style="margin-top: 30px;" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
