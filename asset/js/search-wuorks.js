@@ -238,6 +238,29 @@ function perfilUsuario(result){
     }else{
         func = "c";
     }
+    /*
+    var modal = '<div class="modal fade bs-example-modal-sm" id="perfilUser" style="margin-top: 30px;" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">'+
+                    '<div class="modal-dialog modal-sm">'+
+                      '<div class="modal-content" style="border-radius: 3px; border-top: 7px solid #3AA3E3;" id="userInfo">'+   
+                      '<div class="thumbnail" style="padding: 0px; border:0px; max-width:300px;">'+
+                                        '<img src="'+url_base+'asset/img/user_avatar/'+result.avatar+'" alt="Wuokers" style="margin: 0 auto;">'+
+                                        '<div class="caption text-center">'+
+                                            '<h3 id="nameUser" style="font-weight:300;">'+result.username+'<br/><small style="font-weight:300;">Profesión - '+result.profession+'<hr/></small></h3>'+
+                                         '<p>'+
+                                         '<form name="form-user" id="form-user" action="'+url_base+'wuokers/'+func+'/'+result.username+'/'+result.profession+'/'+result.key_profession+'?wk='+result.wuorks_key+'" method="POST" target="_blank">'+
+                                            '<input type="hidden" name="wuorks_key" id="wuorks_key" value="'+result.wuorks_key+'">'+
+                                            '<input type="hidden" name="key_profession" id="key_profession" value="'+result.key_profession+'">'+
+                                            '<button type="submit" name="verPerfil" style="width:47%;float:right;" class="btn btn-primary btn-block">Ver perfil</button>'+
+                                         '</form>'+
+                                              '<br/>'+
+                                              '<a href="#" class="btn btn-default btn-block" data-dismiss="modal" style="width:47%;float:left;margin-top:-20px;" role="button">Cerrar</a>'+
+                                          '</p>'+
+                                       ' </div>'+
+                                    '</div>'+
+                      '</div>'+
+                    '</div>'+
+                  '</div>';
+          $("#modal-user").append(modal);*/
     
     $("#userInfo").html('<div class="thumbnail" style="padding: 0px; border:0px; max-width:300px;">'+
                             '<img src="'+url_base+'asset/img/user_avatar/'+result.avatar+'" alt="Wuokers" style="margin: 0 auto;">'+
@@ -254,7 +277,7 @@ function perfilUsuario(result){
                               '</p>'+
                            ' </div>'+
                         '</div>');
-             
+    
     $("#perfilUser").modal("show");
     
 }

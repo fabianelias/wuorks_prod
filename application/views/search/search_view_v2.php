@@ -144,6 +144,9 @@
         line-height: 30px;
     }
 </style>
+<div id="modal-user">
+    
+</div>
 <div class="modal fade bs-example-modal-sm" id="perfilUser" style="margin-top: 30px;" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm">
     <div class="modal-content" style="border-radius: 3px; border-top: 7px solid #3AA3E3;" id="userInfo">       
