@@ -18,7 +18,7 @@ Class Wuokers extends CI_Controller{
         $this->key_wuorks = "WBqyGRGuRHHTEIZwTuJfFvPgyhCHZ67GCmtlAxdT";
         $this->api_url    = $this->config->item("api_wuorks");
         
-        //error_reporting(0);
+        error_reporting(0);
         
     }
     
