@@ -122,7 +122,7 @@ function markers(){
            $.each(results.res, function(index, result){
                
                 if(result.lat == null && result.lng == null){
-                    console.log("Error");
+                    //console.log("Error");
                 }else{
                     //Var latlng 
                     var latlng = new google.maps.LatLng(result.lat,result.lng);
