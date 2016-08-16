@@ -66,8 +66,8 @@
                             <br/>
                             <br/>
                             No hemos encontrado Wuokers
-                            que se ajusten a tu busqueda<br/>
-                            intentalo nuevamente.
+                            que se ajusten a tu búsqueda<br/>
+                            inténtalo nuevamente.
                             <hr/>
                             <br/>
                         </center>
@@ -160,7 +160,7 @@
 <input type="hidden" name="url_base" id="url_base" value="<?php echo base_url(); ?>">
 
 
-<!--<script src="<?php echo base_url(); ?>asset/js/jquery.js"></script>-->
+    <!--<script src="<?php echo base_url(); ?>asset/js/jquery.js"></script>-->
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url(); ?>asset/js/bootstrap.min.js"></script>
