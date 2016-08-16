@@ -1,18 +1,7 @@
 <div class="separator"style="height: 52px;">
     
 </div>
-<?php  
-    if($this->session->flashdata('mensajes')){
-    ?>
-      <div class="alert alert-info text-center" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        <a href="javascript:;" class="alert-link"><?php echo $this->session->flashdata('mensajes') ?></a>
-      </div>
-<?php
-   }
-?>
+
 <section>
 <!-- Cabecera para Descktop -->
 <header class="bg-primary" id="map"style="height:260px; width: 100%;"></header>
@@ -57,6 +46,18 @@
         </div>
     </div>
 </div>
+<?php  
+    if($this->session->flashdata('mensajes')){
+    ?>
+    <div class="alert alert-info text-center" id="alerts" role="alert" style="border-radius:0px;margin-bottom: 0px;">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        <a href="javascript:;" class="alert-link"><?php echo $this->session->flashdata('mensajes') ?></a>
+    </div>
+<?php
+   }
+?>
 <div class="container">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
@@ -336,4 +337,9 @@
     WuorksCallback = function() {
       getMapUser({lat: <?php echo $infoUser[0]["lat"];?>, lng: <?php echo $infoUser[0]["lng"];?>});
     };
+    setTimeout(function(){
+                    $("#alerts").slideUp('slow');
+            },
+            4000
+    );
 </script>

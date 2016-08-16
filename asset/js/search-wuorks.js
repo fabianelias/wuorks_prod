@@ -77,7 +77,8 @@ function fn_error(){
     var objMarker = {
         position: latlng,
         map: map,
-        title: "Mi posición actual"
+        label: "Tú"
+        //title: "Mi posición actual"        
     };
     
     //Declaración del marker principal.
@@ -115,10 +116,10 @@ function markers(){
        if(results.res != ""){
            var x = 0;
            var length = results.res.length;
-           for (i = 0; i < length; i++) {
+          // for (i = 0; i < length; i++) {
                 
-               result = results.res[i];
-           //$.each(result.res, function(index, result){
+               //result = results.res[i];
+           $.each(results.res, function(index, result){
                
                 if(result.lat == null && result.lng == null){
                     console.log("Error");
@@ -135,9 +136,18 @@ function markers(){
                         gMarkerWs.setIcon(url_base+"asset/img/markerWuokers.png");
                     
                     google.maps.event.addListener(gMarkerWs, "click", function(){
-                        perfilUsuario(result);
+                      perfilUsuario(result);
+                      //window.location.href = '#cont'+result.wuorks_key;
+                    });
+                    google.maps.event.addListener(gMarkerWs, "mouseover", function(){
                         window.location.href = '#cont'+result.wuorks_key;
-
+                      //gMarkerWs.setIcon(url_base+"asset/img/icon-60-60px.png");
+                        $('#cont'+result.wuorks_key).addClass("hoverLi");
+                    });
+                    
+                    google.maps.event.addListener(gMarkerWs, 'mouseout', function() {
+                       // gMarkerWs.setIcon(url_base+"asset/img/markerWuokers.png");
+                        $('#cont'+result.wuorks_key).removeClass("hoverLi");
                     });
                     
                     var orig = lat+","+lon;
@@ -200,8 +210,9 @@ function markers(){
                         
                       });*/
                       x++;
-                } 
+               // } //for
            }
+           });//each
            $("#ttUser").html(x+" wuokers cerca de ti <i class='fa fa-map-marker text-success'></i>"); 
         }//if result
         else{

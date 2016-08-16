@@ -143,6 +143,10 @@
         font-weight: 300;
         line-height: 30px;
     }
+    .hoverLi{
+         background: #F3F3F3;
+         border-left: 4px solid #3AA3E3;
+    }
 </style>
 <div id="modal-user">
     

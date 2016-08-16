@@ -50,10 +50,11 @@ function getMapUser(lat,lng){
         var objMarker = {
             position: coor,
             map: map,
-            title: "Radio aproximado"
+            //title: "Radio aproximado"
+            label:"Radio aproximado"
         };
         
-         var population = 10;
+         var population = 15;
          var cityCircle = new google.maps.Circle({
           strokeColor: '#2895F1',//'#FF0000',
           strokeOpacity: 0.8,
