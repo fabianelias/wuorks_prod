@@ -43,7 +43,7 @@ Class Head_files{
     public function wuokers(){
         
         $files["scripts"] = array(
-            '0' => 'asset/js/search-wuorks.js'
+            //'0' => 'asset/js/search-wuorks.js'
         );
         
         $files["styles"]  = array(
