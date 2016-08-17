@@ -2,9 +2,18 @@
 <html lang="es">
 
 <head>
-
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <!--fb-plugin-->
+    <link rel="canonical" href="<?php echo $urlFB; ?>">
+    <meta property="og:url" content="<?php echo $urlFB; ?>" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="<?php echo $titulos; ?>" />
+    <meta property="og:description"   content="<?php echo $desc;?>" />
+    <meta property="og:image"         content="<?php echo $avatar?>" />
+    <meta property="og:image"         content="https://www.wuorks.cl/asset/img/logo-wuorks-full.jpg" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Empleos, profesionales, trabajos, servicios, freelancer">
     <meta name="author" content="">
@@ -25,14 +34,6 @@
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>asset/css/animate.min.css" type="text/css">
     
-    <!--fb-plugin-->
-    <meta property="og:url"           content="<?php echo $urlFB; ?>" />
-    <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="<?php echo $titulos; ?>" />
-    <meta property="og:description"   content="<?php echo $desc;?>" />
-    <meta property="og:image"         content="<?php echo $avatar?>" />
-
-
     <?php
         foreach ($files['styles'] as $st){
             echo "<link href='".base_url().$st."' rel='stylesheet'>\n";
@@ -71,7 +72,7 @@
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.5&appId=1036795289715314";
+    js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.5&appId=266809433657812";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 </script>
