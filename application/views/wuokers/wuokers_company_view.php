@@ -73,7 +73,7 @@
             <?php
                 if($this->session->userdata("username") == $infoUser[0]["username"]){
                 ?>
-                <a href="<?php echo base_url(); ?>profile/editProfession/<?php echo $infoUser[0]["key_profession"]; ?>" class="btn btn-block btn-primary">Editar profesión</a>
+                <a href="<?php echo base_url(); ?>profile/editCompany" class="btn btn-block btn-primary">Editar empresa</a>
                 <?php
                 }else{
                 ?>
@@ -139,7 +139,7 @@
             <?php
                 if($this->session->userdata("username") == $infoUser[0]["username"]){
                 ?>
-                <a href="<?php echo base_url(); ?>profile/editProfession/<?php echo $infoUser[0]["key_profession"]; ?>" class="btn btn-block btn-primary">Editar profesión</a>
+                <a href="<?php echo base_url(); ?>profile/editCompany" class="btn btn-block btn-primary">Editar empresa</a>
                 <?php
                 }else{
                 ?>
