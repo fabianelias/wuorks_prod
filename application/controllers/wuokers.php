@@ -46,9 +46,10 @@ Class Wuokers extends CI_Controller{
        
         if($result){
             
-            $data["titulo"] = "Wuorks el profesional que necesitas";
+            $data["titulo"]  = "Wuorks el profesional que necesitas";
             $data["titulos"] = $result[0]["username"];
-            $data["desc"] = $result[0]["job_description"];
+            $data["desc"]    = $result[0]["job_description"];
+            $data["urlFB"]   = base_url()."wuokers/u/".$result[0]["username"]."/".$result[0]["name_profession"]."/".$result[0]["key_profession"]."/?wk=".$result[0]["wuorks_key"];
             $data["avatar"] = base_url()."asset/img/user_avatar/".$result[0]["avatar"]."";
             
             $data["files"] = $this->head_files->wuokers();
@@ -105,6 +106,7 @@ Class Wuokers extends CI_Controller{
                 $data["titulo"] = "Wuorks el profesional que necesitas";
                 $data["titulos"] = $results[0]["company_name"]." - ".$results[0]["company_category"];
                 $data["desc"] = $results[0]["company_description"];
+                $data["urlFB"]   = base_url()."wuokers/c/".$results[0]["username"]."/".$results[0]["company_category"]."/".$results[0]["key_company"]."/?wk=".$results[0]["wuorks_key"];
                 $data["avatar"] = base_url()."asset/img/user_avatar/".$results[0]["avatar"]."";
             
                 $data["files"] = $this->head_files->wuokers();

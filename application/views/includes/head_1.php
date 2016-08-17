@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>asset/css/animate.min.css" type="text/css">
     
     <!--fb-plugin-->
-    <meta property="og:url"           content="https://www.wuorks.cl" />
+    <meta property="og:url"           content="<?php echo $urlFB; ?>" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="<?php echo $titulos; ?>" />
     <meta property="og:description"   content="<?php echo $desc;?>" />
