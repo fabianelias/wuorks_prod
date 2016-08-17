@@ -28,11 +28,11 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>asset/css/animate.min.css" type="text/css">
     
     <!--fb-plugin-->
-    <meta property="og:url"           content="https://www.wuorks.cl" />
+    <meta property="og:url"           content="https://www.wuorks.cl/old-url" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="<?php echo $titulo; ?>" />
     <meta property="og:description"   content="Encontrar a un profesional nunca fue tan fácil" />
-    <meta property="og:image"         content="https://www.wuorks.cl/asset/images-wuorks/logo-cl.png" />
+    <meta property="og:image"         content="https://www.wuorks.cl/asset/img/logo-wuorks-full.jpg" />
 
     
    
